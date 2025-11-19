@@ -298,32 +298,36 @@
 <!-- LIVE NEWS + CVE FETCH SCRIPT -->
 <script>
 // Fetch Cybersecurity News
-async function loadCyberNews() {
-  const container = document.getElementById("vm-news-list");
-  container.innerHTML = "Loading news…";
+/* ------------------- FIXED CVE API (NO API KEY REQUIRED) ------------------- */
+async function loadCVEs() {
+  const container = document.getElementById("vm-cve-list");
+  container.innerHTML = "Loading latest CVEs…";
 
   try {
-    const res = await fetch("https://hn.algolia.com/api/v1/search?query=cyber%20security&tags=story");
+    // CIRCL API → Public, fast, no key needed
+    const res = await fetch("https://cve.circl.lu/api/last");
     const data = await res.json();
 
+    const latest = data.slice(0, 10); // Top 10 CVEs
+
     container.innerHTML = "";
-    data.hits.slice(0, 8).forEach(n => {
+
+    latest.forEach(cve => {
       container.innerHTML += `
-        <div>
-          <a href="${n.url}" target="_blank" class="text-primary font-medium hover:underline">
-            ${n.title}
-          </a>
-          <p class="text-slate-500 text-[10px]">${new Date(n.created_at).toLocaleDateString()}</p>
+        <div class="mb-2">
+          <span class="text-red-400 font-bold">${cve.id}</span>
+          <p class="text-slate-400 text-[10px]">${cve.summary.substring(0, 120)}...</p>
         </div>
       `;
     });
 
-    return data.hits.slice(0, 5).map(n => n.title);
-  } catch {
-    container.innerHTML = "<p class='text-red-400'>News fetch failed.</p>";
+    return latest.map(x => x.id);
+  } catch (err) {
+    container.innerHTML = "<p class='text-red-400'>Unable to load CVEs.</p>";
     return [];
   }
 }
+
 
 // Fetch Latest CVEs
 async function loadCVEs() {
