@@ -53,14 +53,14 @@
       animation: marquee 30s linear infinite;
     }
 
-    /* Simple custom scrollbar for chat */
-    .thin-scrollbar::-webkit-scrollbar {
-      width: 6px;
+    /* Simple scrollbar styling inside widgets */
+    .thin-scroll::-webkit-scrollbar {
+      width: 4px;
     }
-    .thin-scrollbar::-webkit-scrollbar-track {
+    .thin-scroll::-webkit-scrollbar-track {
       background: transparent;
     }
-    .thin-scrollbar::-webkit-scrollbar-thumb {
+    .thin-scroll::-webkit-scrollbar-thumb {
       background: #475569;
       border-radius: 999px;
     }
@@ -102,7 +102,9 @@
       <h1 class="text-4xl md:text-5xl font-semibold text-primary drop-shadow-md">Vasu Melipaka</h1>
 
       <p class="mt-3 text-sm md:text-base text-slate-300 leading-relaxed max-w-xl">
-        I help organizations strengthen their Web, Mobile (Android/iOS), and API security by performing deep manual penetration testing aligned with OWASP, MASVS, and PCI DSS 4.0.
+        I help organizations strengthen their Web, Mobile (Android/iOS), and API security by performing deep manual
+        penetration testing aligned with OWASP, MASVS, and PCI DSS 4.0. My focus is on realistic, high-impact attack
+        paths instead of just scanner output.
       </p>
 
       <div class="mt-7 flex flex-wrap gap-4">
@@ -120,8 +122,7 @@
         <span class="px-3 py-1 rounded-full bg-slate-900/70 border border-slate-700">PCI DSS 4.0 Aligned</span>
       </div>
 
-      <a href="https://www.linkedin.com/in/vaasumelipaka"
-         class="inline-block mt-5 px-5 py-2 rounded-xl bg-slate-900 border border-slate-700 text-slate-200 text-sm">
+      <a href="https://www.linkedin.com/in/vaasumelipaka" class="inline-block mt-5 px-5 py-2 rounded-xl bg-slate-900 border border-slate-700 text-slate-200 text-sm">
         View LinkedIn Profile →
       </a>
     </div>
@@ -129,9 +130,9 @@
     <!-- PHOTO -->
     <div class="flex-1 flex justify-center md:justify-end">
       <div class="relative w-64 h-64 md:w-72 md:h-72 rounded-3xl glass shadow-[0_0_80px_rgba(34,211,238,0.25)] flex items-center justify-center">
-        <img
-          src="https://media.licdn.com/dms/image/v2/D5603AQGsPi39qzGTuw/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1724678006163?e=1765411200&v=beta&t=GUMLXMFnAeRJz82qGWuObJr6Xoz-gJhaXrykxPJcn0A"
-          class="w-[92%] h-[92%] object-cover rounded-2xl border border-slate-700/80" />
+        <img src="https://media.licdn.com/dms/image/v2/D5603AQGsPi39qzGTuw/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1724678006163?e=1765411200&v=beta&t=GUMLXMFnAeRJz82qGWuObJr6Xoz-gJhaXrykxPJcn0A"
+             alt="Vasu Melipaka"
+             class="w-[92%] h-[92%] object-cover rounded-2xl border border-slate-700/80" />
 
         <div class="absolute -top-3 -left-3 px-3 py-1 rounded-full bg-emerald-500 text-xs text-slate-950 font-semibold shadow-lg">
           Available for consulting
@@ -144,6 +145,8 @@
 
   </div>
 </section>
+
+<!-- (You can keep PROFILE / SERVICES / SKILLS sections here if you had them earlier) -->
 
 <!-- CONTACT -->
 <section id="contact" class="max-w-6xl mx-auto px-4 pb-16">
@@ -160,12 +163,10 @@
          class="px-5 py-2 rounded-xl bg-primary text-slate-950 font-semibold text-center">
         Email: contact@vmsecops.com
       </a>
-
       <a href="https://wa.me/917386666420"
          class="px-5 py-2 rounded-xl bg-emerald-500/90 text-slate-950 font-semibold text-center">
         WhatsApp: +91 7386666420
       </a>
-
       <a href="https://www.linkedin.com/in/vaasumelipaka"
          class="px-5 py-2 rounded-xl bg-slate-900 border border-slate-600 text-slate-100 text-center">
         View LinkedIn Profile
@@ -179,272 +180,316 @@
 </section>
 
 <!-- ========================================================= -->
-<!-- 🤖 BOTTOM-RIGHT CHATBOT WIDGET (DUMMY LLM-STYLE) -->
+<!-- 🤖 VM SECOPS CONVERSATION WIDGET (CHATBOT-STYLE LEAD FORM) -->
 <!-- ========================================================= -->
-
-<!-- Chat toggle button -->
-<button id="vm-chat-toggle"
-        class="fixed bottom-20 right-6 h-12 w-12 rounded-full bg-primary text-slate-950 shadow-xl flex items-center justify-center text-xl z-50">
-  💬
-</button>
-
-<!-- Chat widget -->
-<div id="vm-chat-widget"
-     class="fixed bottom-36 right-6 w-96 glass rounded-2xl p-4 text-slate-200 z-50 shadow-2xl hidden">
+<div
+  id="vm-chatbot"
+  class="fixed bottom-20 right-6 w-96 max-w-[95vw] bg-slate-900/95 border border-slate-700 shadow-2xl rounded-2xl p-4 text-slate-100 z-50 backdrop-blur-xl">
 
   <!-- Header -->
   <div class="flex items-center justify-between mb-3">
     <div>
-      <p class="text-xs text-primarySoft uppercase tracking-[0.2em]">VM SecOps</p>
-      <h3 class="text-sm font-semibold">VM SecOps Assistant</h3>
-      <p class="text-[11px] text-slate-400">Ask about services or share your project details.</p>
+      <p class="text-[11px] text-slate-400 uppercase tracking-[0.18em]">VM SecOps Assistant</p>
+      <h3 class="text-sm font-semibold text-primary flex items-center gap-1">
+        🔐 Chat with a Security Analyst
+      </h3>
     </div>
-    <button id="vm-chat-close" class="text-slate-400 hover:text-primary text-lg font-bold">
-      ×
+    <button
+      onclick="document.getElementById('vm-chatbot').classList.toggle('hidden')"
+      class="text-slate-400 hover:text-primary text-lg font-bold leading-none"
+      aria-label="Minimize">
+      −
     </button>
   </div>
 
   <!-- Chat window -->
-  <div id="vm-chat-body"
-       class="glass bg-slate-950/40 rounded-xl p-3 h-40 mb-3 overflow-y-auto thin-scrollbar text-[11px] space-y-2">
-    <div class="flex items-start gap-2">
-      <div class="mt-1 h-6 w-6 rounded-full bg-primary/20 border border-primary/60 flex items-center justify-center text-[10px] text-primary font-bold">
-        VM
-      </div>
-      <div class="bg-slate-800/80 rounded-lg px-3 py-2 max-w-[85%]">
-        <p>Hi, I’m your VM SecOps assistant. I can explain my services or collect details about your application for a security assessment.</p>
+  <div id="vm-chat-log"
+       class="glass bg-slate-900/80 border border-slate-700 rounded-xl p-3 h-44 mb-3 text-[11px] overflow-y-auto thin-scroll">
+    <div class="mb-2">
+      <div class="inline-block px-3 py-2 rounded-2xl bg-slate-800 text-slate-200 max-w-[90%]">
+        Hi, I’m Vasu. Tell me a bit about your app or environment, and I’ll help you plan the right
+        security assessment.
       </div>
     </div>
   </div>
 
-  <!-- Suggested questions -->
-  <div class="mb-3">
-    <p class="text-[11px] text-slate-400 mb-1">Quick questions:</p>
-    <div class="flex flex-wrap gap-2">
-      <button class="px-3 py-1 rounded-full bg-slate-800 text-[11px] hover:bg-slate-700"
-              onclick="vmAskPreset('services')">
-        What services do you offer?
-      </button>
-      <button class="px-3 py-1 rounded-full bg-slate-800 text-[11px] hover:bg-slate-700"
-              onclick="vmAskPreset('process')">
-        How do you work with clients?
-      </button>
-      <button class="px-3 py-1 rounded-full bg-slate-800 text-[11px] hover:bg-slate-700"
-              onclick="vmAskPreset('pci')">
-        Can you help with PCI DSS?
-      </button>
-      <button class="px-3 py-1 rounded-full bg-slate-800 text-[11px] hover:bg-slate-700"
-              onclick="vmAskPreset('timeline')">
-        Typical testing timeline?
-      </button>
-    </div>
+  <!-- Quick question chips -->
+  <p class="text-[11px] text-slate-400 mb-1">Quick questions:</p>
+  <div class="flex flex-wrap gap-2 mb-3 text-[11px]">
+    <button class="px-3 py-1 rounded-full bg-slate-800 text-slate-100 hover:bg-primary/20 border border-slate-600"
+            onclick="vmAskQuick('services')">
+      What services do you offer?
+    </button>
+    <button class="px-3 py-1 rounded-full bg-slate-800 text-slate-100 hover:bg-primary/20 border border-slate-600"
+            onclick="vmAskQuick('clients')">
+      How do you work with clients?
+    </button>
+    <button class="px-3 py-1 rounded-full bg-slate-800 text-slate-100 hover:bg-primary/20 border border-slate-600"
+            onclick="vmAskQuick('pci')">
+      Can you help with PCI DSS?
+    </button>
+    <button class="px-3 py-1 rounded-full bg-slate-800 text-slate-100 hover:bg-primary/20 border border-slate-600"
+            onclick="vmAskQuick('timeline')">
+      Typical testing timeline?
+    </button>
   </div>
 
-  <!-- Lead capture form -->
-  <form id="vm-chat-form" class="space-y-2 text-[11px]" onsubmit="vmSubmitLead(event)">
-    <p class="text-[11px] text-slate-400">
-      Share a few details and I’ll get back with a tailored security assessment plan.
+  <!-- Lead form -->
+  <p class="text-[11px] text-slate-400 mb-2">
+    Share a few details and I’ll get back with a tailored security assessment plan.
+  </p>
+
+  <form id="vm-lead-form" class="space-y-2 text-[12px]">
+    <div class="flex gap-2">
+      <input id="vm-name" type="text" autocomplete="name" required
+             placeholder="Your name"
+             class="flex-1 px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-slate-100 text-[12px] focus:outline-none focus:border-primary" />
+      <input id="vm-email" type="email" autocomplete="email" required
+             placeholder="Work email"
+             class="flex-1 px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-slate-100 text-[12px] focus:outline-none focus:border-primary" />
+    </div>
+
+    <div class="flex gap-2">
+      <input id="vm-phone" type="tel" autocomplete="tel"
+             placeholder="Phone (optional)"
+             class="flex-1 px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-slate-100 text-[12px] focus:outline-none focus:border-primary" />
+      <select id="vm-app-type"
+              class="flex-1 px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-slate-100 text-[12px] focus:outline-none focus:border-primary">
+        <option value="">App type</option>
+        <option>Web</option>
+        <option>Mobile (Android)</option>
+        <option>Mobile (iOS)</option>
+        <option>API / Microservices</option>
+        <option>Cloud / Platform</option>
+        <option>Multiple / Mixed</option>
+      </select>
+    </div>
+
+    <textarea id="vm-message" rows="2" required
+              placeholder="Short description of your app / security need"
+              class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-slate-100 text-[12px] focus:outline-none focus:border-primary resize-none"></textarea>
+
+    <!-- Honeypot (bot trap) -->
+    <input id="vm-company" type="text" style="display:none" autocomplete="off" />
+
+    <p id="vm-form-error" class="text-[11px] text-red-400 hidden"></p>
+    <p id="vm-form-success" class="text-[11px] text-emerald-400 hidden">
+      Thanks! Your details are submitted. I’ll review and get back shortly.
     </p>
-    <div class="grid grid-cols-2 gap-2">
-      <input id="vm-name" type="text" placeholder="Your name"
-             class="bg-slate-900/80 border border-slate-700 rounded-md px-2 py-1 text-[11px] focus:outline-none focus:border-primary" />
-      <input id="vm-email" type="email" placeholder="Work email"
-             class="bg-slate-900/80 border border-slate-700 rounded-md px-2 py-1 text-[11px] focus:outline-none focus:border-primary" />
-    </div>
-    <input id="vm-project" type="text" placeholder="App type (Web / Mobile / API / Cloud)"
-           class="w-full bg-slate-900/80 border border-slate-700 rounded-md px-2 py-1 text-[11px] focus:outline-none focus:border-primary" />
-    <textarea id="vm-message" rows="2" placeholder="Short description of your app / security need"
-              class="w-full bg-slate-900/80 border border-slate-700 rounded-md px-2 py-1 text-[11px] focus:outline-none focus:border-primary"></textarea>
 
-    <button type="submit"
-            class="w-full mt-1 py-2 bg-primary text-slate-950 text-[11px] font-semibold rounded-md">
-      Send details (demo only, no data stored)
+    <button id="vm-submit-btn"
+            type="submit"
+            class="w-full mt-1 py-2 rounded-lg bg-primary text-slate-950 text-[12px] font-semibold hover:bg-primarySoft transition">
+      Send details (secure form – validation enabled)
     </button>
   </form>
 </div>
 
 <!-- ========================================================= -->
-<!-- 🔻 SCROLLING TICKER + LIVE NEWS / CVE FETCH -->
+<!-- 🔻 BOTTOM CYBER TICKER (News + CVEs)                      -->
 <!-- ========================================================= -->
-
-<!-- SCROLLING TICKER -->
 <div class="fixed bottom-0 left-0 w-full bg-slate-950/90 border-t border-slate-700 py-2 overflow-hidden z-40 backdrop-blur">
-  <div id="vm-ticker" class="whitespace-nowrap text-primary text-xs font-semibold animate-marquee">
+  <div id="vm-ticker" class="whitespace-nowrap text-primary text-xs font-semibold animate-marquee px-4">
     Fetching real-time cybersecurity updates…
   </div>
 </div>
 
-<!-- LIVE NEWS + CVE FETCH SCRIPT + CHAT LOGIC -->
+<!-- ========================================================= -->
+<!--  JS: News + CVEs + Chatbot Logic + Apps Script Integration -->
+<!-- ========================================================= -->
 <script>
-// -------- Cybersecurity News --------
-async function loadCyberNews() {
-  const container = document.getElementById("vm-news-list"); // may not exist now, so guard
-  if (container) container.innerHTML = "Loading news…";
+  // ---------- Utility: basic sanitization against XSS ----------
+  function vmSanitize(input) {
+    if (!input) return "";
+    return input
+      .replace(/[<>]/g, "")          // strip angle brackets
+      .replace(/javascript:/gi, "")  // block JS URLs
+      .replace(/<\/?script/gi, "");  // strip script tags
+  }
 
-  try {
-    const res = await fetch("https://hn.algolia.com/api/v1/search?query=cyber%20security&tags=story");
-    const data = await res.json();
+  // ---------- Cybersecurity News (Hacker News API) ----------
+  async function loadCyberNews() {
+    const container = document.getElementById("vm-ticker");
+    try {
+      const res = await fetch("https://hn.algolia.com/api/v1/search?query=cyber%20security&tags=story");
+      const data = await res.json();
+      return data.hits.slice(0, 5).map(n => n.title);
+    } catch {
+      return [];
+    }
+  }
 
-    if (container) {
-      container.innerHTML = "";
-      data.hits.slice(0, 8).forEach(n => {
-        container.innerHTML += `
-          <div>
-            <a href="${n.url}" target="_blank" class="text-primary font-medium hover:underline">
-              ${n.title}
-            </a>
-            <p class="text-slate-500 text-[10px]">${new Date(n.created_at).toLocaleDateString()}</p>
-          </div>
-        `;
-      });
+  // ---------- Latest CVEs (public CVE CIRCL API) ----------
+  async function loadCVEs() {
+    try {
+      const res = await fetch("https://cve.circl.lu/api/last");
+      const data = await res.json();
+      return data.slice(0, 5).map(cve => cve.id);
+    } catch {
+      return [];
+    }
+  }
+
+  // ---------- Build bottom ticker ----------
+  async function updateTicker() {
+    const ticker = document.getElementById("vm-ticker");
+    const news = await loadCyberNews();
+    const cves = await loadCVEs();
+
+    const combined = [
+      ...news.map(n => `📰 ${n}`),
+      ...cves.map(c => `⚠️ ${c}`)
+    ];
+
+    ticker.innerText = combined.length
+      ? combined.join("  •  ")
+      : "Cyber updates temporarily unavailable.";
+  }
+
+  // ---------- Chatbot Quick Answers ----------
+  const vmQuickAnswers = {
+    services: "I usually cover Web, Mobile (Android/iOS), APIs and supporting cloud components. Each engagement includes manual testing, evidence-backed PoCs, CVSS scoring, and clear remediation steps.",
+    clients: "I normally start with a short scoping call, agree the test scope and timelines, then execute in QA/UAT. Findings are shared with developers, architects and QA via structured reports and review calls.",
+    pci: "Yes. I align findings with PCI DSS 4.0 requirements, especially sections 6.x and 8.x. I can also help you prepare for ASV scans and reduce false positives before audits.",
+    timeline: "For a focused release, typical timelines are 3–7 days of testing plus 1–2 days for reporting, depending on modules, APIs and platforms in scope."
+  };
+
+  function vmAppendMessage(text, from) {
+    const log = document.getElementById("vm-chat-log");
+    const wrapper = document.createElement("div");
+    wrapper.className = "mb-2 flex " + (from === "user" ? "justify-end" : "justify-start");
+
+    const bubble = document.createElement("div");
+    bubble.className =
+      "inline-block px-3 py-2 rounded-2xl max-w-[90%] " +
+      (from === "user"
+        ? "bg-primary text-slate-950"
+        : "bg-slate-800 text-slate-200");
+
+    bubble.textContent = text;
+    wrapper.appendChild(bubble);
+    log.appendChild(wrapper);
+    log.scrollTop = log.scrollHeight;
+  }
+
+  function vmAskQuick(type) {
+    const q = {
+      services: "What services do you offer?",
+      clients: "How do you work with clients?",
+      pci: "Can you help with PCI DSS?",
+      timeline: "What is the typical testing timeline?"
+    }[type];
+
+    const a = vmQuickAnswers[type];
+
+    if (!q || !a) return;
+    vmAppendMessage(q, "user");
+    setTimeout(() => vmAppendMessage(a, "bot"), 400);
+  }
+
+  // ---------- Lead Form Submit -> Google Apps Script ----------
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzQ6Uc1rXexWmLxYrcv0CC8xfdpmAj68LLT4f96TOHYPN4BmGy0RNYuyhrYnAolPutk/exec";
+
+  document.getElementById("vm-lead-form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const nameEl = document.getElementById("vm-name");
+    const emailEl = document.getElementById("vm-email");
+    const phoneEl = document.getElementById("vm-phone");
+    const appTypeEl = document.getElementById("vm-app-type");
+    const msgEl = document.getElementById("vm-message");
+    const companyEl = document.getElementById("vm-company"); // honeypot
+
+    const errorEl = document.getElementById("vm-form-error");
+    const successEl = document.getElementById("vm-form-success");
+    const submitBtn = document.getElementById("vm-submit-btn");
+
+    errorEl.classList.add("hidden");
+    successEl.classList.add("hidden");
+    errorEl.textContent = "";
+
+    // Honeypot: if filled, treat as bot and silently exit
+    if (companyEl.value) {
+      return;
     }
 
-    return data.hits.slice(0, 5).map(n => n.title);
-  } catch {
-    if (container) container.innerHTML = "<p class='text-red-400'>Unable to load news.</p>";
-    return [];
-  }
-}
+    const name = vmSanitize(nameEl.value.trim());
+    const email = vmSanitize(emailEl.value.trim());
+    const phone = vmSanitize(phoneEl.value.trim());
+    const appType = vmSanitize(appTypeEl.value.trim());
+    const message = vmSanitize(msgEl.value.trim());
 
-// -------- Latest CVEs (CIRCL, no key) --------
-async function loadCVEs() {
-  const container = document.getElementById("vm-cve-list"); // may not exist now, so guard
-  if (container) container.innerHTML = "Loading CVEs…";
+    // Validation
+    const nameRegex = /^[a-zA-Z\s.]{2,50}$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const phoneRegex = /^[0-9+\-\s]{7,15}$/;
 
-  try {
-    const res = await fetch("https://cve.circl.lu/api/last");
-    const data = await res.json();
-
-    if (container) {
-      container.innerHTML = "";
-      data.slice(0, 10).forEach(cve => {
-        container.innerHTML += `
-          <div>
-            <span class="text-red-400 font-bold">${cve.id}</span>
-            <p class="text-slate-400 text-[10px]">${cve.summary.substring(0, 120)}...</p>
-          </div>
-        `;
-      });
+    if (!nameRegex.test(name)) {
+      errorEl.textContent = "Please enter a valid name (letters and spaces only).";
+      errorEl.classList.remove("hidden");
+      return;
+    }
+    if (!emailRegex.test(email)) {
+      errorEl.textContent = "Please enter a valid work email.";
+      errorEl.classList.remove("hidden");
+      return;
+    }
+    if (phone && !phoneRegex.test(phone)) {
+      errorEl.textContent = "Phone number should contain only digits, spaces, + or -.";
+      errorEl.classList.remove("hidden");
+      return;
+    }
+    if (message.length < 10) {
+      errorEl.textContent = "Please provide a short description (at least 10 characters).";
+      errorEl.classList.remove("hidden");
+      return;
     }
 
-    return data.slice(0, 5).map(cve => cve.id);
-  } catch {
-    if (container) container.innerHTML = "<p class='text-red-400'>Unable to load CVEs.</p>";
-    return [];
-  }
-}
+    // Build payload
+    const payload = {
+      name,
+      email,
+      phone,
+      appType: appType || "Not specified",
+      message,
+      source: "vmsecops.com-chatbot"
+    };
 
-// -------- Build Ticker --------
-async function updateTicker() {
-  const ticker = document.getElementById("vm-ticker");
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Sending…";
 
-  const news = await loadCyberNews();
-  const cves = await loadCVEs();
+    try {
+      await fetch(SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
 
-  const combined = [
-    ...news.map(n => `📰 ${n}`),
-    ...cves.map(c => `⚠️ ${c}`)
-  ];
+      // UX success – even though we cannot read response in no-cors
+      successEl.classList.remove("hidden");
+      nameEl.value = "";
+      emailEl.value = "";
+      phoneEl.value = "";
+      appTypeEl.value = "";
+      msgEl.value = "";
 
-  if (combined.length > 0) {
-    ticker.innerText = combined.join("  •  ");
-  } else {
-    ticker.innerText = "Unable to fetch latest cyber news at the moment.";
-  }
-}
+      vmAppendMessage("New details shared: " + message, "user");
+      setTimeout(() => {
+        vmAppendMessage("Thanks, I’ve received your details. I’ll review and respond with a tailored security assessment plan.", "bot");
+      }, 400);
 
-// -------- Chatbot Logic --------
-const chatToggle = document.getElementById("vm-chat-toggle");
-const chatWidget = document.getElementById("vm-chat-widget");
-const chatClose = document.getElementById("vm-chat-close");
-const chatBody = document.getElementById("vm-chat-body");
+    } catch (err) {
+      errorEl.textContent = "Unable to submit right now. Please email contact@vmsecops.com directly.";
+      errorEl.classList.remove("hidden");
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Send details (secure form – validation enabled)";
+    }
+  });
 
-function vmAppendMessage(sender, text) {
-  const wrapper = document.createElement("div");
-  wrapper.className = "flex items-start gap-2";
-
-  if (sender === "user") {
-    wrapper.classList.add("justify-end");
-    wrapper.innerHTML = `
-      <div class="bg-primary/90 text-slate-950 rounded-lg px-3 py-2 max-w-[85%] ml-auto text-[11px]">
-        ${text}
-      </div>
-    `;
-  } else {
-    wrapper.innerHTML = `
-      <div class="mt-1 h-6 w-6 rounded-full bg-primary/20 border border-primary/60 flex items-center justify-center text-[10px] text-primary font-bold">
-        VM
-      </div>
-      <div class="bg-slate-800/80 rounded-lg px-3 py-2 max-w-[85%] text-[11px]">
-        ${text}
-      </div>
-    `;
-  }
-
-  chatBody.appendChild(wrapper);
-  chatBody.scrollTop = chatBody.scrollHeight;
-}
-
-function vmAskPreset(type) {
-  let qText = "";
-  let aText = "";
-
-  if (type === "services") {
-    qText = "What services do you offer?";
-    aText = "I focus on Web, Mobile (Android/iOS), and API penetration testing, mapped to OWASP Top 10, MASVS, OWASP API Top 10, and PCI DSS 4.0. I also support DevSecOps pipeline hardening and cloud configuration reviews for AWS and Azure.";
-  } else if (type === "process") {
-    qText = "How do you work with clients?";
-    aText = "I usually start with a short scoping call, review your architecture and environments, define test coverage, then execute manual testing supported by tools. Every finding includes PoC, impact, OWASP/PCI mapping, and remediation guidance. I also support retesting before go-live.";
-  } else if (type === "pci") {
-    qText = "Can you help with PCI DSS?";
-    aText = "Yes. I align testing and reporting with PCI DSS 4.0, especially requirements around secure software development, vulnerability management, authentication, and segmentation. Reports are structured so they can be used directly with your QSA or compliance team.";
-  } else if (type === "timeline") {
-    qText = "What is the typical testing timeline?";
-    aText = "For a focused web or mobile application, testing usually takes 3–7 working days depending on scope and environments, followed by a detailed report and review session. Larger scopes or multiple platforms are planned phase-wise.";
-  }
-
-  vmAppendMessage("user", qText);
-  vmAppendMessage("bot", aText);
-}
-
-function vmSubmitLead(event) {
-  event.preventDefault();
-
-  const name = document.getElementById("vm-name").value.trim();
-  const email = document.getElementById("vm-email").value.trim();
-  const project = document.getElementById("vm-project").value.trim();
-  const message = document.getElementById("vm-message").value.trim();
-
-  const summary = `
-Name: ${name || "Not provided"}<br>
-Email: ${email || "Not provided"}<br>
-App / Scope: ${project || "Not provided"}<br>
-Notes: ${message || "Not provided"}
-  `;
-
-  vmAppendMessage("user", "Sharing my project details.");
-  vmAppendMessage("bot",
-    "Thanks for sharing these details. This demo chatbot doesn’t store data, " +
-    "but this is how I typically capture scope before a formal security engagement:<br><br>" +
-    summary +
-    "<br><br>You can also email me directly at <strong>contact@vmsecops.com</strong> with logs, screenshots, or architecture diagrams."
-  );
-
-  // Simple reset
-  document.getElementById("vm-chat-form").reset();
-}
-
-// Toggle chat open/close
-chatToggle.addEventListener("click", () => {
-  chatWidget.classList.toggle("hidden");
-});
-
-chatClose.addEventListener("click", () => {
-  chatWidget.classList.add("hidden");
-});
-
-// Init ticker once page loads
-updateTicker();
+  // Run ticker once page loads
+  window.addEventListener("load", updateTicker);
 </script>
 
 </body>
