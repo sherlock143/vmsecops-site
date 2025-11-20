@@ -29,8 +29,12 @@
   </script>
 
   <style>
-    html { scroll-behavior: smooth; }
-    body { font-family: "Poppins", sans-serif; }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
 
     .glass {
       background: rgba(15, 23, 42, 0.9);
@@ -52,6 +56,22 @@
       display: inline-block;
       animation: marquee 30s linear infinite;
     }
+
+    /* Scroll reveal: fade + slide up */
+    .fade-section {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+    }
+    .fade-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* For cards appearing with small delay */
+    .fade-delay-1 { transition-delay: 0.08s; }
+    .fade-delay-2 { transition-delay: 0.16s; }
+    .fade-delay-3 { transition-delay: 0.24s; }
   </style>
 </head>
 
@@ -77,15 +97,13 @@
       <a href="#services" class="hover:text-primary">Services</a>
       <a href="#case-studies" class="hover:text-primary">Case Studies</a>
       <a href="#skills" class="hover:text-primary">Skills</a>
-      <a href="#faq" class="hover:text-primary">FAQ</a>
-      <a href="#resume" class="hover:text-primary">Resume</a>
       <a href="#contact" class="hover:text-primary">Contact</a>
     </nav>
   </div>
 </header>
 
 <!-- HERO -->
-<section id="top" class="max-w-6xl mx-auto px-4 pt-10 pb-24 md:pt-16">
+<section id="top" class="max-w-6xl mx-auto px-4 pt-10 pb-24 md:pt-16 fade-section">
   <div class="flex flex-col md:flex-row items-center gap-10 md:gap-14">
 
     <!-- TEXT -->
@@ -98,9 +116,9 @@
       </h1>
 
       <p class="mt-3 text-sm md:text-base text-slate-300 leading-relaxed max-w-xl">
-        I help organizations strengthen their Web, Mobile (Android/iOS), and API security by performing deep manual
-        penetration testing aligned with OWASP, MASVS, and PCI DSS 4.0. My focus is on realistic attack paths,
-        not just automated scanner output.
+        I help organizations strengthen their Web, Mobile (Android/iOS) and API security through
+        deep, manual penetration testing aligned with OWASP, MASVS and PCI DSS 4.0. I focus on
+        realistic attack paths and business impact, not just automated scanner output.
       </p>
 
       <div class="mt-7 flex flex-wrap gap-4">
@@ -126,11 +144,13 @@
       </a>
     </div>
 
-    <!-- PHOTO -->
+    <!-- PHOTO with parallax -->
     <div class="flex-1 flex justify-center md:justify-end">
-      <div class="relative w-64 h-64 md:w-72 md:h-72 rounded-3xl glass shadow-[0_0_80px_rgba(34,211,238,0.25)] flex items-center justify-center">
+      <div id="hero-parallax"
+           class="relative w-64 h-64 md:w-72 md:h-72 rounded-3xl glass shadow-[0_0_80px_rgba(34,211,238,0.35)] flex items-center justify-center">
         <img
           src="https://media.licdn.com/dms/image/v2/D5603AQGsPi39qzGTuw/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1724678006163?e=1765411200&v=beta&t=GUMLXMFnAeRJz82qGWuObJr6Xoz-gJhaXrykxPJcn0A"
+          alt="Vasu Melipaka"
           class="w-[92%] h-[92%] object-cover rounded-2xl border border-slate-700/80" />
 
         <div class="absolute -top-3 -left-3 px-3 py-1 rounded-full bg-emerald-500 text-xs text-slate-950 font-semibold shadow-lg">
@@ -146,7 +166,7 @@
 </section>
 
 <!-- PROFILE -->
-<section id="profile" class="max-w-6xl mx-auto px-4 pb-20">
+<section id="profile" class="max-w-6xl mx-auto px-4 pb-20 fade-section">
   <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
     <h2 class="text-2xl md:text-3xl font-semibold text-primary">Profile Summary</h2>
     <p class="text-xs md:text-sm text-slate-400">
@@ -158,13 +178,13 @@
     <div class="glass rounded-2xl p-6">
       <h3 class="text-lg font-semibold text-slate-100 mb-2">Who I Am</h3>
       <p class="text-sm text-slate-300 leading-relaxed">
-        Senior Security Analyst specializing in penetration testing for Web, Mobile, and API platforms. I combine
-        offensive security techniques with a strong understanding of business workflows, helping leaders understand
-        the real impact of technical vulnerabilities.
+        Senior Security Analyst specializing in penetration testing for Web, Mobile and API platforms.
+        I combine offensive security techniques with a strong understanding of business workflows, helping
+        leaders understand the real impact behind each vulnerability.
       </p>
       <p class="mt-3 text-sm text-slate-300 leading-relaxed">
-        I work closely with engineering, QA, and architecture teams to embed security into SDLC checkpoints instead
-        of treating it as a last-minute approval gate.
+        I work closely with engineering, QA and architecture teams to embed security into SDLC checkpoints
+        instead of treating it as a last-minute approval gate.
       </p>
     </div>
 
@@ -182,7 +202,7 @@
 </section>
 
 <!-- DASHBOARD -->
-<section id="dashboard" class="max-w-6xl mx-auto px-4 pb-20">
+<section id="dashboard" class="max-w-6xl mx-auto px-4 pb-20 fade-section">
   <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
     <h2 class="text-2xl md:text-3xl font-semibold text-primary">Pentest Snapshot</h2>
     <p class="text-xs md:text-sm text-slate-400">
@@ -191,22 +211,22 @@
   </div>
 
   <div class="grid md:grid-cols-4 gap-4 text-sm">
-    <div class="glass rounded-2xl p-4 text-center">
+    <div class="glass rounded-2xl p-4 text-center fade-section fade-delay-1">
       <p class="text-[11px] text-slate-400">Active Engagements</p>
       <p id="dash-engagements" class="text-2xl font-semibold text-primary mt-1">3</p>
       <p class="text-[11px] text-slate-500 mt-1">Web · Mobile · API</p>
     </div>
-    <div class="glass rounded-2xl p-4 text-center">
+    <div class="glass rounded-2xl p-4 text-center fade-section fade-delay-2">
       <p class="text-[11px] text-slate-400">Findings (Last 30 Days)</p>
       <p id="dash-findings" class="text-2xl font-semibold text-primary mt-1">27</p>
       <p class="text-[11px] text-slate-500 mt-1">Across all severities</p>
     </div>
-    <div class="glass rounded-2xl p-4 text-center">
+    <div class="glass rounded-2xl p-4 text-center fade-section fade-delay-3">
       <p class="text-[11px] text-slate-400">High / Critical</p>
       <p id="dash-high" class="text-2xl font-semibold text-red-400 mt-1">8</p>
-      <p class="text-[11px] text-slate-500 mt-1">Prioritized with owners</p>
+      <p class="text-[11px] text-slate-500 mt-1">Prioritised with owners</p>
     </div>
-    <div class="glass rounded-2xl p-4 text-center">
+    <div class="glass rounded-2xl p-4 text-center fade-section fade-delay-3">
       <p class="text-[11px] text-slate-400">Retest Closure Rate</p>
       <p id="dash-closure" class="text-2xl font-semibold text-emerald-400 mt-1">92%</p>
       <p class="text-[11px] text-slate-500 mt-1">Confirmed and verified</p>
@@ -214,7 +234,7 @@
   </div>
 
   <div class="grid md:grid-cols-3 gap-6 mt-6 text-sm">
-    <div class="glass rounded-2xl p-5">
+    <div class="glass rounded-2xl p-5 fade-section">
       <h3 class="font-semibold text-slate-100 mb-2">Risk Coverage</h3>
       <ul class="text-slate-300 space-y-1 text-[13px]">
         <li>• OWASP Web Top 10</li>
@@ -224,7 +244,7 @@
         <li>• Authentication & session management</li>
       </ul>
     </div>
-    <div class="glass rounded-2xl p-5">
+    <div class="glass rounded-2xl p-5 fade-section">
       <h3 class="font-semibold text-slate-100 mb-2">Engagement Style</h3>
       <ul class="text-slate-300 space-y-1 text-[13px]">
         <li>• Threat-driven test planning</li>
@@ -234,7 +254,7 @@
         <li>• Executive-ready summaries for leadership</li>
       </ul>
     </div>
-    <div class="glass rounded-2xl p-5">
+    <div class="glass rounded-2xl p-5 fade-section">
       <h3 class="font-semibold text-slate-100 mb-2">Ideal Use Cases</h3>
       <ul class="text-slate-300 space-y-1 text-[13px]">
         <li>• Pre-production security sign-off</li>
@@ -247,133 +267,102 @@
   </div>
 </section>
 
-<!-- ATTACK SURFACE MAP -->
-<section id="attack-map" class="max-w-6xl mx-auto px-4 pb-20">
-  <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
-    <h2 class="text-2xl md:text-3xl font-semibold text-primary">Attack Surface Overview</h2>
-    <p class="text-xs md:text-sm text-slate-400">
-      How I look at a typical digital product from an attacker’s perspective.
-    </p>
-  </div>
-
-  <div class="grid md:grid-cols-4 gap-4 text-sm">
-    <div class="glass rounded-2xl p-4">
-      <h3 class="font-semibold text-slate-100 mb-1">Web Frontend</h3>
-      <p class="text-slate-300 text-[13px]">
-        Login, dashboards, file uploads, role-based screens and client-side logic.
-      </p>
-    </div>
-    <div class="glass rounded-2xl p-4">
-      <h3 class="font-semibold text-slate-100 mb-1">APIs & Services</h3>
-      <p class="text-slate-300 text-[13px]">
-        REST/JSON endpoints, microservices, authentication flows, rate-limited APIs.
-      </p>
-    </div>
-    <div class="glass rounded-2xl p-4">
-      <h3 class="font-semibold text-slate-100 mb-1">Mobile Apps</h3>
-      <p class="text-slate-300 text-[13px]">
-        Android & iOS apps, local storage, runtime protections and API usage.
-      </p>
-    </div>
-    <div class="glass rounded-2xl p-4">
-      <h3 class="font-semibold text-slate-100 mb-1">Cloud & Platform</h3>
-      <p class="text-slate-300 text-[13px]">
-        Identity, perimeter, storage exposure, CI/CD and configuration drift.
-      </p>
-    </div>
-  </div>
-</section>
-
 <!-- SERVICES -->
-<section id="services" class="max-w-6xl mx-auto px-4 pb-20">
+<section id="services" class="max-w-6xl mx-auto px-4 pb-20 fade-section">
   <h2 class="text-2xl md:text-3xl font-semibold text-primary mb-6">Security Services</h2>
 
   <div class="grid md:grid-cols-3 gap-6 text-sm">
-    <div class="glass rounded-2xl p-5 border border-primary/30">
+    <div class="glass rounded-2xl p-5 border border-primary/30 fade-section fade-delay-1">
       <h3 class="font-semibold text-slate-100 mb-2">Web Application Pentesting</h3>
       <p class="text-slate-300">
-        Deep testing for authentication flaws, broken access control, IDOR, session issues and business logic gaps.
+        Deep testing for authentication flaws, broken access control, IDOR, session weaknesses and
+        business logic gaps before production.
       </p>
     </div>
 
-    <div class="glass rounded-2xl p-5">
+    <div class="glass rounded-2xl p-5 fade-section fade-delay-2">
       <h3 class="font-semibold text-slate-100 mb-2">Mobile App Security</h3>
       <p class="text-slate-300">
-        MASVS-aligned assessments for Android & iOS – storage, API usage, reverse engineering and runtime controls.
+        MASVS-aligned assessments for Android & iOS – storage, API usage, reverse engineering and
+        runtime protections.
       </p>
     </div>
 
-    <div class="glass rounded-2xl p-5">
+    <div class="glass rounded-2xl p-5 fade-section fade-delay-3">
       <h3 class="font-semibold text-slate-100 mb-2">API Security</h3>
       <p class="text-slate-300">
-        Coverage for BOLA/BFLA, JWT handling, rate-limiting, replay and abuse scenarios across microservices.
+        Coverage for BOLA/BFLA, JWT handling, rate limiting, replay and abuse scenarios across
+        microservices and gateways.
       </p>
     </div>
 
-    <div class="glass rounded-2xl p-5">
+    <div class="glass rounded-2xl p-5 fade-section">
       <h3 class="font-semibold text-slate-100 mb-2">DevSecOps Advisory</h3>
       <p class="text-slate-300">
-        SAST, SCA and secrets scanning integration into CI/CD with meaningful quality gates and low noise.
+        SAST, SCA and secrets scanning integration into CI/CD pipelines with meaningful quality gates
+        and low noise for developers.
       </p>
     </div>
 
-    <div class="glass rounded-2xl p-5">
+    <div class="glass rounded-2xl p-5 fade-section">
       <h3 class="font-semibold text-slate-100 mb-2">Cloud & Platform Review</h3>
       <p class="text-slate-300">
-        IAM, storage, network and perimeter checks to reduce unexpected exposure of internal services.
+        IAM, storage, network and perimeter checks to reduce unexpected exposure of internal services
+        in AWS / Azure environments.
       </p>
     </div>
 
-    <div class="glass rounded-2xl p-5">
+    <div class="glass rounded-2xl p-5 fade-section">
       <h3 class="font-semibold text-slate-100 mb-2">Retesting & Advisory</h3>
       <p class="text-slate-300">
-        Fix validation, ticket-level review and continuous advisory support for future releases.
+        Fix validation, ticket-level review and continuous advisory support for future releases and
+        security enhancements.
       </p>
     </div>
   </div>
 </section>
 
 <!-- CASE STUDIES -->
-<section id="case-studies" class="max-w-6xl mx-auto px-4 pb-20">
+<section id="case-studies" class="max-w-6xl mx-auto px-4 pb-20 fade-section">
   <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
     <h2 class="text-2xl md:text-3xl font-semibold text-primary">Sample Engagements</h2>
     <p class="text-xs md:text-sm text-slate-400">
-      High-level examples to show how I approach different environments.
+      High-level examples of how I approach different environments.
     </p>
   </div>
 
   <div class="grid md:grid-cols-3 gap-6 text-sm">
-    <div class="glass rounded-2xl p-5">
+    <div class="glass rounded-2xl p-5 fade-section fade-delay-1">
       <h3 class="font-semibold text-slate-100 mb-1">Fintech Web Portal</h3>
       <p class="text-slate-300 text-[13px]">
-        Performed full-stack web pentest for a finance portal handling customer onboarding and payments.
-        Identified broken access control and risky session handling before go-live.
+        Full-stack web assessment for a finance portal handling onboarding and payments. Identified
+        broken access control and session handling issues before production rollout.
       </p>
     </div>
-    <div class="glass rounded-2xl p-5">
+    <div class="glass rounded-2xl p-5 fade-section fade-delay-2">
       <h3 class="font-semibold text-slate-100 mb-1">Mobile App + API</h3>
       <p class="text-slate-300 text-[13px]">
-        Assessed Android/iOS app and supporting APIs against OWASP MASVS and API Top 10, focusing on auth flows,
-        data protection and runtime protections.
+        Assessed Android/iOS app and supporting APIs against OWASP MASVS and API Top 10, focusing on
+        authentication flows, data protection and runtime protections.
       </p>
     </div>
-    <div class="glass rounded-2xl p-5">
+    <div class="glass rounded-2xl p-5 fade-section fade-delay-3">
       <h3 class="font-semibold text-slate-100 mb-1">PCI DSS Readiness</h3>
       <p class="text-slate-300 text-[13px]">
-        Assisted a payment-focused product team with web and mobile security validation mapped to PCI DSS 4.0,
-        enabling a smoother compliance review.
+        Supported a payment-focused product team with web and mobile security validation mapped to
+        PCI DSS 4.0, enabling smoother compliance review and audit discussions.
       </p>
     </div>
   </div>
 </section>
 
 <!-- SKILLS & TOOLS -->
-<section id="skills" class="max-w-6xl mx-auto px-4 pb-20">
+<section id="skills" class="max-w-6xl mx-auto px-4 pb-20 fade-section">
   <h2 class="text-2xl md:text-3xl font-semibold text-primary mb-6">Skills & Tooling</h2>
 
   <div class="glass rounded-2xl p-6 text-sm">
     <div class="grid md:grid-cols-3 gap-6">
-      <div>
+      <div class="fade-section fade-delay-1">
         <h3 class="font-semibold text-slate-100 mb-2">Application Security</h3>
         <div class="flex flex-wrap gap-2 text-[11px] text-slate-300">
           <span class="px-3 py-1 rounded-full bg-slate-900/70 border border-slate-700">OWASP Web Top 10</span>
@@ -382,7 +371,7 @@
           <span class="px-3 py-1 rounded-full bg-slate-900/70 border border-slate-700">CORS / CSRF</span>
         </div>
       </div>
-      <div>
+      <div class="fade-section fade-delay-2">
         <h3 class="font-semibold text-slate-100 mb-2">Mobile & API</h3>
         <div class="flex flex-wrap gap-2 text-[11px] text-slate-300">
           <span class="px-3 py-1 rounded-full bg-slate-900/70 border border-slate-700">MASVS M1–M10</span>
@@ -391,7 +380,7 @@
           <span class="px-3 py-1 rounded-full bg-slate-900/70 border border-slate-700">Burp Suite</span>
         </div>
       </div>
-      <div>
+      <div class="fade-section fade-delay-3">
         <h3 class="font-semibold text-slate-100 mb-2">Governance & DevSecOps</h3>
         <div class="flex flex-wrap gap-2 text-[11px] text-slate-300">
           <span class="px-3 py-1 rounded-full bg-slate-900/70 border border-slate-700">PCI DSS 4.0</span>
@@ -404,98 +393,32 @@
   </div>
 </section>
 
-<!-- TIMELINE -->
-<section id="timeline" class="max-w-6xl mx-auto px-4 pb-20">
-  <h2 class="text-2xl md:text-3xl font-semibold text-primary mb-6">Experience & Certifications</h2>
-
-  <div class="glass rounded-2xl p-6 text-sm">
-    <div class="space-y-4">
-      <div class="flex items-start gap-3">
-        <div class="mt-1 h-2 w-2 rounded-full bg-primary"></div>
-        <div>
-          <p class="text-xs text-slate-400">11+ Years in IT</p>
-          <p class="text-slate-200 font-semibold text-sm">Enterprise systems, application delivery and support</p>
-        </div>
-      </div>
-      <div class="flex items-start gap-3">
-        <div class="mt-1 h-2 w-2 rounded-full bg-primary"></div>
-        <div>
-          <p class="text-xs text-slate-400">6+ Years in Cybersecurity</p>
-          <p class="text-slate-200 font-semibold text-sm">Dedicated to penetration testing & application security</p>
-        </div>
-      </div>
-      <div class="flex items-start gap-3">
-        <div class="mt-1 h-2 w-2 rounded-full bg-primary"></div>
-        <div>
-          <p class="text-xs text-slate-400">Certification</p>
-          <p class="text-slate-200 font-semibold text-sm">CEH (Certified Ethical Hacker)</p>
-        </div>
-      </div>
-      <div class="flex items-start gap-3">
-        <div class="mt-1 h-2 w-2 rounded-full bg-primary"></div>
-        <div>
-          <p class="text-xs text-slate-400">Focus Areas</p>
-          <p class="text-slate-200 font-semibold text-sm">
-            PCI DSS-focused testing, mobile and API security for product and fintech environments.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- TESTIMONIALS -->
-<section id="testimonials" class="max-w-6xl mx-auto px-4 pb-20">
-  <h2 class="text-2xl md:text-3xl font-semibold text-primary mb-6">Feedback & Working Style</h2>
-
-  <div class="grid md:grid-cols-3 gap-6 text-sm">
-    <div class="glass rounded-2xl p-5">
-      <p class="text-slate-300 text-[13px]">
-        “Findings were clear, validated and mapped to our controls. The retest phase was efficient and well documented.”
-      </p>
-      <p class="mt-3 text-[11px] text-slate-500">– Product & Engineering Stakeholders</p>
-    </div>
-    <div class="glass rounded-2xl p-5">
-      <p class="text-slate-300 text-[13px]">
-        “Risk explanation was practical and easy to present to leadership. Helped us prioritise remediation realistically.”
-      </p>
-      <p class="mt-3 text-[11px] text-slate-500">– Security & Compliance Teams</p>
-    </div>
-    <div class="glass rounded-2xl p-5">
-      <p class="text-slate-300 text-[13px]">
-        “Collaboration with our developers was smooth, with specific guidance on how to fix each issue.”
-      </p>
-      <p class="mt-3 text-[11px] text-slate-500">– Development & QA Teams</p>
-    </div>
-  </div>
-</section>
-
 <!-- ACTIVITY SNAPSHOT -->
-<section id="activity" class="max-w-6xl mx-auto px-4 pb-20">
+<section id="activity" class="max-w-6xl mx-auto px-4 pb-20 fade-section">
   <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
     <h2 class="text-2xl md:text-3xl font-semibold text-primary">Portfolio Activity Snapshot</h2>
     <p class="text-xs md:text-sm text-slate-400">
-      High-level view of the type of work I usually handle.
+      High-level view of the type of work I typically handle.
     </p>
   </div>
 
   <div class="grid md:grid-cols-4 gap-4 text-sm">
-    <div class="glass rounded-2xl p-4 text-center">
+    <div class="glass rounded-2xl p-4 text-center fade-section fade-delay-1">
       <p class="text-[11px] text-slate-400">Web Applications</p>
       <p class="text-2xl font-semibold text-primary mt-1">40+</p>
       <p class="text-[11px] text-slate-500 mt-1">Portals & dashboards</p>
     </div>
-    <div class="glass rounded-2xl p-4 text-center">
+    <div class="glass rounded-2xl p-4 text-center fade-section fade-delay-2">
       <p class="text-[11px] text-slate-400">Mobile Apps</p>
       <p class="text-2xl font-semibold text-primary mt-1">20+</p>
       <p class="text-[11px] text-slate-500 mt-1">Android & iOS</p>
     </div>
-    <div class="glass rounded-2xl p-4 text-center">
+    <div class="glass rounded-2xl p-4 text-center fade-section fade-delay-3">
       <p class="text-[11px] text-slate-400">APIs</p>
       <p class="text-2xl font-semibold text-primary mt-1">50+</p>
       <p class="text-[11px] text-slate-500 mt-1">Public & internal</p>
     </div>
-    <div class="glass rounded-2xl p-4 text-center">
+    <div class="glass rounded-2xl p-4 text-center fade-section fade-delay-3">
       <p class="text-[11px] text-slate-400">PCI DSS-Focused</p>
       <p class="text-2xl font-semibold text-primary mt-1">Multiple</p>
       <p class="text-[11px] text-slate-500 mt-1">Web, mobile & APIs</p>
@@ -503,123 +426,14 @@
   </div>
 </section>
 
-<!-- RESUME -->
-<section id="resume" class="max-w-6xl mx-auto px-4 pb-20">
-  <div class="glass rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-    <div>
-      <h2 class="text-2xl font-semibold text-primary mb-2">Resume & Profiles</h2>
-      <p class="text-sm text-slate-300 max-w-xl">
-        For detailed experience, responsibilities and project highlights, you can review my latest resume
-        and connect on LinkedIn.
-      </p>
-      <p class="mt-2 text-[11px] text-slate-500">
-        Last updated: 2025
-      </p>
-    </div>
-
-    <div class="flex flex-col gap-3 text-sm">
-      <a href="#" class="px-5 py-2 rounded-xl bg-primary text-slate-950 font-semibold text-center">
-        Download Resume (PDF)
-      </a>
-      <a href="https://www.linkedin.com/in/vaasumelipaka"
-         class="px-5 py-2 rounded-xl bg-slate-900 border border-slate-600 text-slate-100 text-center">
-        View LinkedIn Profile
-      </a>
-      <a href="#contact"
-         class="px-5 py-2 rounded-xl bg-emerald-500/90 text-slate-950 font-semibold text-center">
-        Book a Short Intro Call
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- BLOG / INSIGHTS -->
-<section id="blog" class="max-w-6xl mx-auto px-4 pb-20">
-  <h2 class="text-2xl md:text-3xl font-semibold text-primary mb-6">Security Insights</h2>
-
-  <div class="grid md:grid-cols-3 gap-6 text-sm">
-    <div class="glass rounded-2xl p-5">
-      <h3 class="font-semibold text-slate-100 mb-1">Why manual testing still matters</h3>
-      <p class="text-slate-300 text-[13px]">
-        Automated tools are essential, but they do not understand business logic or real abuse scenarios.
-        I combine both to avoid blind spots.
-      </p>
-    </div>
-    <div class="glass rounded-2xl p-5">
-      <h3 class="font-semibold text-slate-100 mb-1">API-first products and security</h3>
-      <p class="text-slate-300 text-[13px]">
-        Modern products expose most of their functionality through APIs. Testing access control and abuse
-        scenarios at the API layer is critical.
-      </p>
-    </div>
-    <div class="glass rounded-2xl p-5">
-      <h3 class="font-semibold text-slate-100 mb-1">Mobile apps beyond the UI</h3>
-      <p class="text-slate-300 text-[13px]">
-        A secure mobile app requires more than UI testing – it needs storage protection, secure APIs and
-        strong runtime controls against tampering.
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ ACCORDION -->
-<section id="faq" class="max-w-6xl mx-auto px-4 pb-20">
-  <h2 class="text-2xl md:text-3xl font-semibold text-primary mb-6">Frequently Asked Questions</h2>
-
-  <div class="space-y-3 text-sm">
-    <details class="glass rounded-2xl p-4">
-      <summary class="cursor-pointer font-semibold text-slate-100 text-sm">
-        Do you only rely on automated scanners?
-      </summary>
-      <p class="mt-2 text-slate-300 text-[13px]">
-        No. I use tools as a starting point, but the core of my work is manual testing – validating findings,
-        exploring business logic paths, and building realistic attack chains that tools cannot see by themselves.
-      </p>
-    </details>
-
-    <details class="glass rounded-2xl p-4">
-      <summary class="cursor-pointer font-semibold text-slate-100 text-sm">
-        Can you align testing with our PCI DSS 4.0 assessments?
-      </summary>
-      <p class="mt-2 text-slate-300 text-[13px]">
-        Yes. I structure findings with OWASP and PCI DSS mappings so that your security and compliance teams can
-        consume the results directly for assessments, ASV scans and evidence packs.
-      </p>
-    </details>
-
-    <details class="glass rounded-2xl p-4">
-      <summary class="cursor-pointer font-semibold text-slate-100 text-sm">
-        What type of deliverables will we receive?
-      </summary>
-      <p class="mt-2 text-slate-300 text-[13px]">
-        You receive a clear vulnerability report with PoCs, technical impact, CVSS scoring, risk explanation,
-        remediation guidance, and a summary that can be shared with leadership.
-      </p>
-    </details>
-
-    <details class="glass rounded-2xl p-4">
-      <summary class="cursor-pointer font-semibold text-slate-100 text-sm">
-        How do you usually collaborate with internal teams?
-      </summary>
-      <p class="mt-2 text-slate-300 text-[13px]">
-        I adapt to your workflow – email, Teams, Jira, Confluence or shared drives – and keep communication
-        focused on clarity, reproducibility and realistic remediation options.
-      </p>
-    </details>
-  </div>
-</section>
-
 <!-- CONTACT -->
-<section id="contact" class="max-w-6xl mx-auto px-4 pb-16">
+<section id="contact" class="max-w-6xl mx-auto px-4 pb-16 fade-section">
   <div class="glass rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
     <div>
       <h2 class="text-2xl font-semibold text-primary mb-2">Let’s Talk Security</h2>
       <p class="text-sm text-slate-300 max-w-xl">
-        If you need a focused pentest for an upcoming release, an independent review of an existing application,
-        or PCI DSS-aligned testing, feel free to reach out.
-      </p>
-      <p class="mt-3 text-xs text-slate-400">
-        You can also use the “Schedule a Call” button to share a brief requirement and preferred time window.
+        If you need a focused pentest for an upcoming release, an independent review of an existing
+        application, or PCI DSS-aligned testing, feel free to reach out.
       </p>
     </div>
 
@@ -629,15 +443,15 @@
         Email: contact@vmsecops.com
       </a>
 
-      <a href="https://wa.me/9173866666420"
+      <a href="https://wa.me/917386666420"
          class="px-5 py-2 rounded-xl bg-emerald-500/90 text-slate-950 font-semibold text-center">
         WhatsApp: +91 7386666420
       </a>
 
-      <button onclick="openContactPopup()"
-              class="px-5 py-2 rounded-xl bg-slate-900 border border-primary/70 text-primary font-semibold text-center text-sm">
-        Schedule a 20–30 Min Intro Call
-      </button>
+      <a href="https://www.linkedin.com/in/vaasumelipaka"
+         class="px-5 py-2 rounded-xl bg-slate-900 border border-slate-600 text-slate-100 text-center">
+        View LinkedIn Profile
+      </a>
     </div>
   </div>
 
@@ -647,99 +461,16 @@
 </section>
 
 <!-- ========================================================= -->
-<!-- 🔥 LIVE CYBER NEWS + CVE TICKER -->
+<!-- 🔥 LIVE CYBER NEWS + CVE TICKER (unchanged behaviour) -->
 <!-- ========================================================= -->
-
 <div class="fixed bottom-0 left-0 w-full bg-slate-950/90 border-t border-slate-700 py-2 overflow-hidden z-40 backdrop-blur">
   <div id="vm-ticker" class="whitespace-nowrap text-primary text-xs font-semibold animate-marquee">
     Fetching real-time cybersecurity updates…
   </div>
 </div>
 
-<!-- ========================================================= -->
-<!-- 🟢 FLOATING WHATSAPP BUTTON -->
-<!-- ========================================================= -->
-
-<a href="https://wa.me/9173866666420"
-   target="_blank"
-   class="fixed bottom-16 right-5 w-12 h-12 rounded-full bg-emerald-500 flex items-center justify-center shadow-lg z-50 border border-emerald-300">
-  <span class="text-xl">🟢</span>
-</a>
-
-<!-- ========================================================= -->
-<!-- 🛡 SECURITY TIP OF THE DAY WIDGET -->
-<!-- ========================================================= -->
-
-<div class="fixed bottom-16 left-4 max-w-xs glass rounded-2xl p-3 text-xs text-slate-200 z-40 hidden md:block">
-  <p class="text-[10px] uppercase tracking-[0.18em] text-primarySoft mb-1">Security Tip of the Day</p>
-  <p id="vm-tip-text" class="text-slate-200">
-    Loading today’s tip…
-  </p>
-</div>
-
-<!-- ========================================================= -->
-<!-- 📞 SIMPLE CONTACT / SCHEDULE CALL POPUP (NO AI) -->
-<!-- ========================================================= -->
-
-<div id="vm-contact-overlay"
-     class="fixed inset-0 bg-black/60 z-50 items-center justify-center hidden">
-  <div class="glass rounded-2xl p-6 w-full max-w-md mx-4 relative">
-    <button onclick="closeContactPopup()"
-            class="absolute top-3 right-3 text-slate-500 hover:text-primary text-lg font-bold">
-      ×
-    </button>
-
-    <h3 class="text-lg font-semibold text-primary mb-2">Schedule a Call / Share Requirement</h3>
-    <p class="text-xs text-slate-400 mb-4">
-      Share a brief summary of your application, what kind of testing you need, and your preferred time window.
-      Your message will be sent securely to <span class="text-primary">contact@vmsecops.com</span>.
-    </p>
-
-    <form id="vmContactForm" class="space-y-3">
-      <div>
-        <label class="text-xs text-slate-400">Name</label>
-        <input id="c_name" type="text" required
-               class="w-full mt-1 px-3 py-2 rounded-lg bg-slate-800 border border-slate-700 text-xs"
-               placeholder="Your name">
-      </div>
-
-      <div>
-        <label class="text-xs text-slate-400">Email</label>
-        <input id="c_email" type="email" required
-               class="w-full mt-1 px-3 py-2 rounded-lg bg-slate-800 border border-slate-700 text-xs"
-               placeholder="you@example.com">
-      </div>
-
-      <div>
-        <label class="text-xs text-slate-400">Preferred Time Window</label>
-        <input id="c_time" type="text"
-               class="w-full mt-1 px-3 py-2 rounded-lg bg-slate-800 border border-slate-700 text-xs"
-               placeholder="Example: Weekdays 3–6 PM IST">
-      </div>
-
-      <div>
-        <label class="text-xs text-slate-400">Brief Requirement</label>
-        <textarea id="c_message" rows="3" required
-                  class="w-full mt-1 px-3 py-2 rounded-lg bg-slate-800 border border-slate-700 text-xs"
-                  placeholder="Example: Web + API pentest for production release in 4–6 weeks."></textarea>
-      </div>
-
-      <button type="submit"
-              class="w-full py-2 bg-primary text-slate-900 font-semibold text-xs rounded-lg">
-        Send Request
-      </button>
-
-      <p id="c_status" class="text-[11px] text-center mt-2"></p>
-    </form>
-  </div>
-</div>
-
-<!-- ========================================================= -->
-<!-- 🧠 SCRIPTS -->
-<!-- ========================================================= -->
-
 <script>
-// ---------- Dashboard visual randomisation (purely cosmetic) ----------
+/* Simple randomisation for dashboard counts (visual only) */
 (function() {
   const rand = (base, spread) => base + Math.floor(Math.random() * spread);
   document.getElementById("dash-engagements").innerText = rand(2, 3);
@@ -748,7 +479,7 @@
   document.getElementById("dash-closure").innerText = rand(88, 7) + "%";
 })();
 
-// ---------- Cyber News ----------
+/* Fetch cyber news */
 async function loadCyberNews() {
   try {
     const res = await fetch("https://hn.algolia.com/api/v1/search?query=cyber%20security&tags=story");
@@ -759,7 +490,7 @@ async function loadCyberNews() {
   }
 }
 
-// ---------- CVE Feed ----------
+/* Fetch CVEs */
 async function loadCVEs() {
   try {
     const res = await fetch("https://cve.circl.lu/api/last");
@@ -770,7 +501,7 @@ async function loadCVEs() {
   }
 }
 
-// ---------- Update Ticker ----------
+/* Update ticker text */
 async function updateTicker() {
   const ticker = document.getElementById("vm-ticker");
   const news = await loadCyberNews();
@@ -782,73 +513,29 @@ async function updateTicker() {
 }
 updateTicker();
 
-// ---------- Security Tip of the Day ----------
-(function securityTipOfDay() {
-  const tips = [
-    "Always enforce multi-factor authentication for admin and high-risk user accounts.",
-    "Review API endpoints for IDOR and broken access control – especially where IDs appear in URLs.",
-    "Ensure all authentication and session cookies are Secure, HttpOnly and have SameSite=Lax or Strict.",
-    "Avoid exposing stack traces or verbose error messages to end users in production.",
-    "Regularly rotate API keys, database credentials and encryption keys; never hardcode them in apps.",
-    "Use a strong Content Security Policy (CSP) to reduce XSS risk in critical portals.",
-    "Validate input and encode output – do not rely only on client-side validation.",
-    "Apply rate limiting on login, password reset and high-value API endpoints.",
-    "Encrypt sensitive data in transit (TLS 1.2+) and at rest with strong cipher suites.",
-    "Log security events centrally and review them regularly for suspicious activity."
-  ];
+/* Scroll reveal: Intersection Observer */
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+      }
+    });
+  },
+  { threshold: 0.18 }
+);
 
-  const now = new Date();
-  const dayOfYear = Math.floor((now - new Date(now.getFullYear(), 0, 0)) / 86400000);
-  const index = dayOfYear % tips.length;
-  const el = document.getElementById("vm-tip-text");
-  if (el) el.textContent = tips[index];
-})();
+// Attach to all .fade-section elements
+document.querySelectorAll(".fade-section").forEach(el => {
+  observer.observe(el);
+});
 
-// ---------- Contact Popup (Schedule Call) ----------
-function openContactPopup() {
-  const overlay = document.getElementById("vm-contact-overlay");
-  overlay.style.display = "flex";
-}
-function closeContactPopup() {
-  const overlay = document.getElementById("vm-contact-overlay");
-  overlay.style.display = "none";
-}
-
-// Simple XSS-safe cleaner
-function cleanInput(str) {
-  return str.replace(/[<>/'"]/g, "");
-}
-
-document.getElementById("vmContactForm").addEventListener("submit", async function(e) {
-  e.preventDefault();
-
-  const name = cleanInput(document.getElementById("c_name").value.trim());
-  const email = cleanInput(document.getElementById("c_email").value.trim());
-  const time = cleanInput(document.getElementById("c_time").value.trim());
-  const message = cleanInput(document.getElementById("c_message").value.trim());
-  const status = document.getElementById("c_status");
-
-  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailPattern.test(email)) {
-    status.textContent = "Please enter a valid email address.";
-    status.style.color = "red";
-    return;
-  }
-
-  status.textContent = "Sending...";
-  status.style.color = "#00E5FF";
-
-  try {
-    // Placeholder – integrate Google Apps Script endpoint later if needed
-    await new Promise(res => setTimeout(res, 800)); // simulate send
-
-    status.textContent = "Request captured. I will reach out via email.";
-    status.style.color = "#22c55e";
-    document.getElementById("vmContactForm").reset();
-  } catch {
-    status.textContent = "Failed to send. Please try again or use email/WhatsApp.";
-    status.style.color = "red";
-  }
+/* Parallax effect for hero photo */
+window.addEventListener("scroll", () => {
+  const hero = document.getElementById("hero-parallax");
+  if (!hero) return;
+  const offset = window.scrollY * 0.12; // subtle parallax
+  hero.style.transform = `translateY(${offset * -0.2}px)`;
 });
 </script>
 
