@@ -31,14 +31,26 @@
   <style>
     html { scroll-behavior: smooth; }
     body { font-family: "Poppins", sans-serif; }
+
     .glass {
       background: rgba(15, 23, 42, 0.9);
       backdrop-filter: blur(18px);
       border: 1px solid rgba(148, 163, 184, 0.25);
     }
+
     .grid-bg {
       background-image: radial-gradient(circle at 1px 1px, rgba(148,163,184,0.12) 1px, transparent 0);
       background-size: 32px 32px;
+    }
+
+    /* Ticker */
+    @keyframes marquee {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+    .animate-marquee {
+      display: inline-block;
+      animation: marquee 30s linear infinite;
     }
   </style>
 </head>
@@ -62,7 +74,7 @@
       <a href="#top" class="hover:text-primary">Home</a>
       <a href="#profile" class="hover:text-primary">Profile</a>
       <a href="#services" class="hover:text-primary">Services</a>
-      <a href="#experience" class="hover:text-primary">Experience</a>
+      <a href="#skills" class="hover:text-primary">Skills</a>
       <a href="#contact" class="hover:text-primary">Contact</a>
     </nav>
   </div>
@@ -78,19 +90,17 @@
       <h1 class="text-4xl md:text-5xl font-semibold text-primary drop-shadow-md">Vasu Melipaka</h1>
 
       <p class="mt-3 text-sm md:text-base text-slate-300 leading-relaxed max-w-xl">
-        I help organizations strengthen their Web, Mobile (Android/iOS), and API platforms
-        through deep manual security testing aligned with OWASP, MASVS, and PCI DSS 4.0.
-        My focus is on identifying real attack paths, validating security controls, and
-        supporting teams with clear, actionable remediation guidance.
+        I help organizations strengthen their Web, Mobile (Android/iOS), and API security by performing deep manual penetration testing 
+        aligned with OWASP, MASVS, and PCI DSS 4.0.
       </p>
 
       <div class="mt-7 flex flex-wrap gap-4">
         <a href="#profile" class="px-5 py-3 rounded-xl bg-primary text-slate-950 font-semibold text-sm shadow-lg shadow-cyan-500/30">About Vasu</a>
-        <a href="#services" class="px-5 py-3 rounded-xl border border-primary/70 text-primary font-semibold text-sm hover:bg-primary/10">Security Services</a>
+        <a href="#services" class="px-5 py-3 rounded-xl border border-primary/70 text-primary font-semibold text-sm hover:bg-primary/10">Security Services for Your Business</a>
       </div>
 
       <div class="mt-5 flex flex-wrap gap-2 text-[11px] text-slate-400">
-        <span class="px-3 py-1 rounded-full bg-slate-900/70 border border-slate-700">Web & API Security</span>
+        <span class="px-3 py-1 rounded-full bg-slate-900/70 border border-slate-700">Web & API Pentesting</span>
         <span class="px-3 py-1 rounded-full bg-slate-900/70 border border-slate-700">Mobile Security (MASVS)</span>
         <span class="px-3 py-1 rounded-full bg-slate-900/70 border border-slate-700">PCI DSS 4.0 Aligned</span>
       </div>
@@ -118,13 +128,30 @@
 
 <!-- PROFILE -->
 <section id="profile" class="max-w-6xl mx-auto px-4 pb-20">
-  <h2 class="text-2xl md:text-3xl font-semibold text-primary mb-3">Profile Summary</h2>
+  <div class="flex items-center justify-between mb-8">
+    <h2 class="text-2xl md:text-3xl font-semibold text-primary">Profile Summary</h2>
+    <p class="text-xs md:text-sm text-slate-400">High-impact, manual security assessments.</p>
+  </div>
 
-  <div class="glass rounded-2xl p-6 text-sm text-slate-300 leading-relaxed">
-    I am a cybersecurity specialist with experience across Web, Mobile, Cloud, and API security.
-    My work focuses on helping engineering and business teams build secure, scalable, and compliant applications.
-    I combine disciplined testing practices with strong understanding of product workflows and risk priorities.
-    My objective is to deliver clear, validated insights that support confident release decisions.
+  <div class="grid md:grid-cols-2 gap-6">
+    <div class="glass rounded-2xl p-6">
+      <h3 class="text-lg font-semibold text-slate-100 mb-2">Who I Am</h3>
+      <p class="text-sm text-slate-300 leading-relaxed">
+        Senior Security Analyst specializing in Web, Mobile, and API penetration testing. I focus on uncovering
+        real attack paths aligned with OWASP & MASVS.
+      </p>
+    </div>
+
+    <div class="glass rounded-2xl p-6">
+      <h3 class="text-lg font-semibold text-slate-100 mb-2">What I Deliver</h3>
+      <ul class="text-sm text-slate-300 space-y-2 leading-relaxed">
+        <li>• Evidence-backed findings with clear PoCs</li>
+        <li>• OWASP / MASVS / PCI DSS mappings</li>
+        <li>• CVSS-based risk ratings</li>
+        <li>• Developer-ready remediation steps</li>
+        <li>• Retesting & validation</li>
+      </ul>
+    </div>
   </div>
 </section>
 
@@ -133,73 +160,202 @@
   <h2 class="text-2xl md:text-3xl font-semibold text-primary mb-6">Security Services</h2>
 
   <div class="grid md:grid-cols-3 gap-6 text-sm">
+    <div class="glass rounded-2xl p-5 border border-primary/30"><h3 class="font-semibold text-slate-100 mb-2">Web Application Pentesting</h3><p class="text-slate-300">Testing auth, IDOR, BAC, logic flaws.</p></div>
 
-    <div class="glass rounded-2xl p-5 border border-primary/30">
-      <h3 class="font-semibold text-slate-100 mb-2">Web Application Security</h3>
-      <p class="text-slate-300">End-to-end review of auth flows, access control, validation, logic, and session management.</p>
-    </div>
+    <div class="glass rounded-2xl p-5"><h3 class="font-semibold text-slate-100 mb-2">Mobile App Security</h3><p class="text-slate-300">MASVS testing, SSL pinning, runtime protections.</p></div>
 
-    <div class="glass rounded-2xl p-5">
-      <h3 class="font-semibold text-slate-100 mb-2">Mobile App Security</h3>
-      <p class="text-slate-300">Android & iOS testing aligned with MASVS standards covering storage, APIs, RE, and runtime behavior.</p>
-    </div>
+    <div class="glass rounded-2xl p-5"><h3 class="font-semibold text-slate-100 mb-2">API Security</h3><p class="text-slate-300">BOLA/BFLA, JWT, rate limiting & abuse.</p></div>
 
-    <div class="glass rounded-2xl p-5">
-      <h3 class="font-semibold text-slate-100 mb-2">API Security</h3>
-      <p class="text-slate-300">Assessment of API access control, rate limiting, token handling, and parameter protections.</p>
-    </div>
+    <div class="glass rounded-2xl p-5"><h3 class="font-semibold text-slate-100 mb-2">DevSecOps</h3><p class="text-slate-300">SAST, SCA, CI/CD hardening, secrets scanning.</p></div>
 
-    <div class="glass rounded-2xl p-5">
-      <h3 class="font-semibold text-slate-100 mb-2">DevSecOps</h3>
-      <p class="text-slate-300">Security integration in CI/CD including SAST, SCA, secret scanning, and pipeline hardening.</p>
-    </div>
+    <div class="glass rounded-2xl p-5"><h3 class="font-semibold text-slate-100 mb-2">Cloud Security</h3><p class="text-slate-300">IAM, network, storage misconfigurations.</p></div>
 
-    <div class="glass rounded-2xl p-5">
-      <h3 class="font-semibold text-slate-100 mb-2">Cloud Security</h3>
-      <p class="text-slate-300">IAM reviews, identity permissions, exposure checks, and secure deployment validations.</p>
-    </div>
-
-    <div class="glass rounded-2xl p-5">
-      <h3 class="font-semibold text-slate-100 mb-2">Security Advisory</h3>
-      <p class="text-slate-300">Retesting, fixes validation, and release readiness reviews for projects.</p>
-    </div>
-
-  </div>
-</section>
-
-<!-- EXPERIENCE -->
-<section id="experience" class="max-w-6xl mx-auto px-4 pb-20">
-  <h2 class="text-2xl md:text-3xl font-semibold text-primary mb-4">Experience Highlights</h2>
-
-  <div class="glass rounded-2xl p-6 text-sm text-slate-300 leading-relaxed space-y-3">
-    <p>• Delivered 200+ application security assessments across multiple industries.</p>
-    <p>• Strong experience in fintech, retail, marketplace, and cloud-native environments.</p>
-    <p>• Work closely with engineering, QA, and architecture teams for secure releases.</p>
-    <p>• Known for detailed, accurate findings with validated proofs and clear remediation.</p>
-    <p>• Focused on practical, risk-based security aligned with business priorities.</p>
+    <div class="glass rounded-2xl p-5"><h3 class="font-semibold text-slate-100 mb-2">Retesting & Advisory</h3><p class="text-slate-300">Validation & continuous advisory support.</p></div>
   </div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact" class="max-w-6xl mx-auto px-4 pb-16">
-  <div class="glass rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+  <div class="glass rounded-2xl p-6 md:p-8 flex flex-col md:flex-row justify-between gap-6">
     <div>
       <h2 class="text-2xl font-semibold text-primary mb-2">Let’s Talk Security</h2>
-      <p class="text-sm text-slate-300 max-w-xl">
-        If you need help with penetration testing, mobile security, API reviews, cloud checks, or PCI DSS validation,
-        feel free to reach out. I respond within the same day.
-      </p>
+      <p class="text-sm text-slate-300 max-w-xl">Need a pentest, API review, mobile testing or PCI DSS help?</p>
     </div>
 
     <div class="flex flex-col gap-3 text-sm">
       <a href="mailto:contact@vmsecops.com" class="px-5 py-2 rounded-xl bg-primary text-slate-950 font-semibold text-center">Email: contact@vmsecops.com</a>
+
       <a href="https://wa.me/917386666420" class="px-5 py-2 rounded-xl bg-emerald-500/90 text-slate-950 font-semibold text-center">WhatsApp: +91 7386666420</a>
+
       <a href="https://www.linkedin.com/in/vaasumelipaka" class="px-5 py-2 rounded-xl bg-slate-900 border border-slate-600 text-slate-100 text-center">View LinkedIn Profile</a>
     </div>
   </div>
 
   <p class="mt-6 text-[11px] text-slate-500 text-center">© 2025 VM SecOps – Portfolio & Security Services by Vasu Melipaka.</p>
 </section>
+
+
+
+<!-- ========================================================= -->
+<!-- 🔥 LIVE CYBER NEWS + CVE TICKER -->
+<!-- ========================================================= -->
+
+<div class="fixed bottom-0 left-0 w-full bg-slate-950/90 border-t border-slate-700 py-2 overflow-hidden z-40 backdrop-blur">
+  <div id="vm-ticker" class="whitespace-nowrap text-primary text-xs font-semibold animate-marquee">
+    Fetching real-time cybersecurity updates…
+  </div>
+</div>
+
+<script>
+// Fetch News
+async function loadCyberNews() {
+  try {
+    const res = await fetch("https://hn.algolia.com/api/v1/search?query=cyber%20security&tags=story");
+    const data = await res.json();
+    return data.hits.slice(0, 5).map(n => n.title);
+  } catch {
+    return ["Cyber news unavailable"];
+  }
+}
+
+// Fetch CVEs
+async function loadCVEs() {
+  try {
+    const res = await fetch("https://cve.circl.lu/api/last");
+    const data = await res.json();
+    return data.slice(0, 5).map(cve => cve.id);
+  } catch {
+    return ["CVE feed unavailable"];
+  }
+}
+
+async function updateTicker() {
+  const ticker = document.getElementById("vm-ticker");
+  const news = await loadCyberNews();
+  const cves = await loadCVEs();
+  ticker.innerText = [...news.map(n => `📰 ${n}`), ...cves.map(c => `⚠️ ${c}`)].join("  •  ");
+}
+updateTicker();
+</script>
+
+
+
+<!-- ========================================================= -->
+<!-- 💬 VM SECOps Chatbot -->
+<!-- ========================================================= -->
+
+<div id="vm-chatbot" class="fixed bottom-20 right-6 w-80 bg-slate-900/95 border border-slate-700 shadow-xl rounded-2xl p-4 z-50 backdrop-blur-xl">
+
+  <h3 class="text-sm font-semibold text-primary mb-3">💬 VM SecOps Chat Assistant</h3>
+
+  <p class="text-xs text-slate-400 mb-3">
+    Ask anything or leave your details.
+  </p>
+
+  <form id="vmChatForm" class="space-y-3">
+
+    <!-- NAME -->
+    <div>
+      <label class="text-xs text-slate-400">Your Name</label>
+      <input id="cb_name" type="text" required
+        class="w-full mt-1 px-3 py-2 rounded-lg bg-slate-800 border border-slate-700 text-xs"
+        placeholder="Enter your name">
+    </div>
+
+    <!-- EMAIL -->
+    <div>
+      <label class="text-xs text-slate-400">Email</label>
+      <input id="cb_email" type="email" required
+        class="w-full mt-1 px-3 py-2 rounded-lg bg-slate-800 border border-slate-700 text-xs"
+        placeholder="your@email.com">
+    </div>
+
+    <!-- PHONE -->
+    <div>
+      <label class="text-xs text-slate-400">Phone Number</label>
+      <input id="cb_phone" type="text" required
+        class="w-full mt-1 px-3 py-2 rounded-lg bg-slate-800 border border-slate-700 text-xs"
+        placeholder="+91 XXXXXXXX">
+    </div>
+
+    <!-- MESSAGE -->
+    <div>
+      <label class="text-xs text-slate-400">Message</label>
+      <textarea id="cb_message" rows="3" required
+        class="w-full mt-1 px-3 py-2 rounded-lg bg-slate-800 border border-slate-700 text-xs"
+        placeholder="How can I help you?"></textarea>
+    </div>
+
+    <button type="submit"
+      class="w-full py-2 bg-primary text-slate-900 font-semibold text-xs rounded-lg">
+      Send Secure Message
+    </button>
+
+    <p id="cb_status" class="text-[11px] text-center mt-2"></p>
+
+  </form>
+</div>
+
+<button onclick="toggleChatbot()"
+  class="fixed bottom-5 right-6 px-4 py-3 rounded-full bg-primary text-slate-900 font-semibold text-sm shadow-lg z-50">
+  💬 Chat
+</button>
+
+<script>
+function toggleChatbot() {
+  const box = document.getElementById("vm-chatbot");
+  box.style.display = (box.style.display === "none" ? "block" : "none");
+}
+
+// XSS-safe input cleaner
+function cleanInput(str) {
+  return str.replace(/[<>/'"]/g, "");
+}
+
+document.getElementById("vmChatForm").addEventListener("submit", async function(e) {
+  e.preventDefault();
+
+  const name = cleanInput(document.getElementById("cb_name").value);
+  const email = cleanInput(document.getElementById("cb_email").value);
+  const phone = cleanInput(document.getElementById("cb_phone").value);
+  const message = cleanInput(document.getElementById("cb_message").value);
+  const status = document.getElementById("cb_status");
+
+  // Validate Email Format
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailPattern.test(email)) {
+    status.textContent = "Invalid email format.";
+    status.style.color = "red";
+    return;
+  }
+
+  // Phone validation
+  if (!/^[0-9+ ]+$/.test(phone)) {
+    status.textContent = "Phone must be digits only.";
+    status.style.color = "red";
+    return;
+  }
+
+  status.textContent = "Sending...";
+  status.style.color = "#00E5FF";
+
+  try {
+    await fetch("https://script.google.com/macros/s/AKfycbzQ6Uc1rXexWmLxYrcv0CC8xfdpmAj68LLT4f96TOHYPN4BmGy0RNYuyhrYnAolPutk/exec", {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, email, phone, message })
+    });
+
+    status.textContent = "Message sent successfully!";
+    status.style.color = "#22c55e";
+    document.getElementById("vmChatForm").reset();
+  } catch {
+    status.textContent = "Failed to send.";
+    status.style.color = "red";
+  }
+});
+</script>
 
 </body>
 </html>
