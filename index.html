@@ -52,6 +52,18 @@
       display: inline-block;
       animation: marquee 30s linear infinite;
     }
+
+    /* Simple custom scrollbar for chat */
+    .thin-scrollbar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .thin-scrollbar::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .thin-scrollbar::-webkit-scrollbar-thumb {
+      background: #475569;
+      border-radius: 999px;
+    }
   </style>
 </head>
 
@@ -94,8 +106,12 @@
       </p>
 
       <div class="mt-7 flex flex-wrap gap-4">
-        <a href="#profile" class="px-5 py-3 rounded-xl bg-primary text-slate-950 font-semibold text-sm shadow-lg shadow-cyan-500/30">About Vasu</a>
-        <a href="#services" class="px-5 py-3 rounded-xl border border-primary/70 text-primary font-semibold text-sm hover:bg-primary/10">Security Services for Your Business</a>
+        <a href="#profile" class="px-5 py-3 rounded-xl bg-primary text-slate-950 font-semibold text-sm shadow-lg shadow-cyan-500/30">
+          About Vasu
+        </a>
+        <a href="#services" class="px-5 py-3 rounded-xl border border-primary/70 text-primary font-semibold text-sm hover:bg-primary/10">
+          Security Services for Your Business
+        </a>
       </div>
 
       <div class="mt-5 flex flex-wrap gap-2 text-[11px] text-slate-400">
@@ -104,7 +120,8 @@
         <span class="px-3 py-1 rounded-full bg-slate-900/70 border border-slate-700">PCI DSS 4.0 Aligned</span>
       </div>
 
-      <a href="https://www.linkedin.com/in/vaasumelipaka" class="inline-block mt-5 px-5 py-2 rounded-xl bg-slate-900 border border-slate-700 text-slate-200 text-sm">
+      <a href="https://www.linkedin.com/in/vaasumelipaka"
+         class="inline-block mt-5 px-5 py-2 rounded-xl bg-slate-900 border border-slate-700 text-slate-200 text-sm">
         View LinkedIn Profile →
       </a>
     </div>
@@ -112,10 +129,13 @@
     <!-- PHOTO -->
     <div class="flex-1 flex justify-center md:justify-end">
       <div class="relative w-64 h-64 md:w-72 md:h-72 rounded-3xl glass shadow-[0_0_80px_rgba(34,211,238,0.25)] flex items-center justify-center">
-        <img src="https://media.licdn.com/dms/image/v2/D5603AQGsPi39qzGTuw/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1724678006163?e=1765411200&v=beta&t=GUMLXMFnAeRJz82qGWuObJr6Xoz-gJhaXrykxPJcn0A"
-             class="w-[92%] h-[92%] object-cover rounded-2xl border border-slate-700/80" />
+        <img
+          src="https://media.licdn.com/dms/image/v2/D5603AQGsPi39qzGTuw/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1724678006163?e=1765411200&v=beta&t=GUMLXMFnAeRJz82qGWuObJr6Xoz-gJhaXrykxPJcn0A"
+          class="w-[92%] h-[92%] object-cover rounded-2xl border border-slate-700/80" />
 
-        <div class="absolute -top-3 -left-3 px-3 py-1 rounded-full bg-emerald-500 text-xs text-slate-950 font-semibold shadow-lg">Available for consulting</div>
+        <div class="absolute -top-3 -left-3 px-3 py-1 rounded-full bg-emerald-500 text-xs text-slate-950 font-semibold shadow-lg">
+          Available for consulting
+        </div>
         <div class="absolute -bottom-3 -right-3 px-3 py-1 rounded-full bg-slate-900/90 text-[11px] border border-slate-600">
           6+ yrs Cybersecurity · 11+ yrs IT
         </div>
@@ -130,52 +150,122 @@
   <div class="glass rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
     <div>
       <h2 class="text-2xl font-semibold text-primary mb-2">Let’s Talk Security</h2>
-      <p class="text-sm text-slate-300 max-w-xl">Need a pentest, API review, mobile testing or PCI DSS help? Reach out anytime.</p>
+      <p class="text-sm text-slate-300 max-w-xl">
+        Need a pentest, API review, mobile testing or PCI DSS help? Reach out anytime.
+      </p>
     </div>
 
     <div class="flex flex-col gap-3 text-sm">
-      <a href="mailto:contact@vmsecops.com" class="px-5 py-2 rounded-xl bg-primary text-slate-950 font-semibold text-center">Email: contact@vmsecops.com</a>
-      <a href="https://wa.me/917386666420" class="px-5 py-2 rounded-xl bg-emerald-500/90 text-slate-950 font-semibold text-center">WhatsApp: +91 7386666420</a>
-      <a href="https://www.linkedin.com/in/vaasumelipaka" class="px-5 py-2 rounded-xl bg-slate-900 border border-slate-600 text-slate-100 text-center">View LinkedIn Profile</a>
+      <a href="mailto:contact@vmsecops.com"
+         class="px-5 py-2 rounded-xl bg-primary text-slate-950 font-semibold text-center">
+        Email: contact@vmsecops.com
+      </a>
+
+      <a href="https://wa.me/917386666420"
+         class="px-5 py-2 rounded-xl bg-emerald-500/90 text-slate-950 font-semibold text-center">
+        WhatsApp: +91 7386666420
+      </a>
+
+      <a href="https://www.linkedin.com/in/vaasumelipaka"
+         class="px-5 py-2 rounded-xl bg-slate-900 border border-slate-600 text-slate-100 text-center">
+        View LinkedIn Profile
+      </a>
     </div>
   </div>
 
-  <p class="mt-6 text-[11px] text-slate-500 text-center">© 2025 VM SecOps – Portfolio & Security Services by Vasu Melipaka.</p>
+  <p class="mt-6 text-[11px] text-slate-500 text-center">
+    © 2025 VM SecOps – Portfolio & Security Services by Vasu Melipaka.
+  </p>
 </section>
 
 <!-- ========================================================= -->
-<!-- 🔥 CYBER THREAT WIDGET + LIVE CVE + LIVE NEWS + TICKER -->
+<!-- 🤖 BOTTOM-RIGHT CHATBOT WIDGET (DUMMY LLM-STYLE) -->
 <!-- ========================================================= -->
 
-<!-- POPUP WIDGET -->
-<div id="vm-cyber-widget"
-     class="fixed bottom-20 right-6 w-96 bg-slate-900/95 border border-slate-700 shadow-xl rounded-2xl p-4 text-slate-200 z-50 backdrop-blur-xl hidden">
+<!-- Chat toggle button -->
+<button id="vm-chat-toggle"
+        class="fixed bottom-20 right-6 h-12 w-12 rounded-full bg-primary text-slate-950 shadow-xl flex items-center justify-center text-xl z-50">
+  💬
+</button>
 
-  <div class="flex justify-between items-center mb-2">
-    <h3 class="text-sm font-semibold text-primary">🔐 Live Cyber Threat Updates</h3>
-    <button onclick="document.getElementById('vm-cyber-widget').style.display='none'"
-      class="text-slate-400 hover:text-primary text-lg font-bold">×</button>
+<!-- Chat widget -->
+<div id="vm-chat-widget"
+     class="fixed bottom-36 right-6 w-96 glass rounded-2xl p-4 text-slate-200 z-50 shadow-2xl hidden">
+
+  <!-- Header -->
+  <div class="flex items-center justify-between mb-3">
+    <div>
+      <p class="text-xs text-primarySoft uppercase tracking-[0.2em]">VM SecOps</p>
+      <h3 class="text-sm font-semibold">VM SecOps Assistant</h3>
+      <p class="text-[11px] text-slate-400">Ask about services or share your project details.</p>
+    </div>
+    <button id="vm-chat-close" class="text-slate-400 hover:text-primary text-lg font-bold">
+      ×
+    </button>
   </div>
 
-  <div class="text-[11px] text-slate-400 mb-2">Latest Cybersecurity News</div>
-
-  <div id="vm-news-list" class="text-xs text-slate-300 space-y-3 h-40 overflow-y-auto pr-2">
-    <p>Loading news...</p>
+  <!-- Chat window -->
+  <div id="vm-chat-body"
+       class="glass bg-slate-950/40 rounded-xl p-3 h-40 mb-3 overflow-y-auto thin-scrollbar text-[11px] space-y-2">
+    <div class="flex items-start gap-2">
+      <div class="mt-1 h-6 w-6 rounded-full bg-primary/20 border border-primary/60 flex items-center justify-center text-[10px] text-primary font-bold">
+        VM
+      </div>
+      <div class="bg-slate-800/80 rounded-lg px-3 py-2 max-w-[85%]">
+        <p>Hi, I’m your VM SecOps assistant. I can explain my services or collect details about your application for a security assessment.</p>
+      </div>
+    </div>
   </div>
 
-  <hr class="border-slate-700 my-3">
-
-  <div class="text-[11px] text-slate-400 mb-2">Latest Critical CVEs (High & Critical)</div>
-
-  <div id="vm-cve-list" class="text-xs text-slate-300 space-y-2 h-36 overflow-y-auto pr-2">
-    <p>Loading CVEs...</p>
+  <!-- Suggested questions -->
+  <div class="mb-3">
+    <p class="text-[11px] text-slate-400 mb-1">Quick questions:</p>
+    <div class="flex flex-wrap gap-2">
+      <button class="px-3 py-1 rounded-full bg-slate-800 text-[11px] hover:bg-slate-700"
+              onclick="vmAskPreset('services')">
+        What services do you offer?
+      </button>
+      <button class="px-3 py-1 rounded-full bg-slate-800 text-[11px] hover:bg-slate-700"
+              onclick="vmAskPreset('process')">
+        How do you work with clients?
+      </button>
+      <button class="px-3 py-1 rounded-full bg-slate-800 text-[11px] hover:bg-slate-700"
+              onclick="vmAskPreset('pci')">
+        Can you help with PCI DSS?
+      </button>
+      <button class="px-3 py-1 rounded-full bg-slate-800 text-[11px] hover:bg-slate-700"
+              onclick="vmAskPreset('timeline')">
+        Typical testing timeline?
+      </button>
+    </div>
   </div>
 
-  <button class="mt-3 w-full py-2 bg-primary text-slate-950 text-xs font-semibold rounded-lg"
-          onclick="document.getElementById('vm-cyber-widget').style.display='none'">
-    Close
-  </button>
+  <!-- Lead capture form -->
+  <form id="vm-chat-form" class="space-y-2 text-[11px]" onsubmit="vmSubmitLead(event)">
+    <p class="text-[11px] text-slate-400">
+      Share a few details and I’ll get back with a tailored security assessment plan.
+    </p>
+    <div class="grid grid-cols-2 gap-2">
+      <input id="vm-name" type="text" placeholder="Your name"
+             class="bg-slate-900/80 border border-slate-700 rounded-md px-2 py-1 text-[11px] focus:outline-none focus:border-primary" />
+      <input id="vm-email" type="email" placeholder="Work email"
+             class="bg-slate-900/80 border border-slate-700 rounded-md px-2 py-1 text-[11px] focus:outline-none focus:border-primary" />
+    </div>
+    <input id="vm-project" type="text" placeholder="App type (Web / Mobile / API / Cloud)"
+           class="w-full bg-slate-900/80 border border-slate-700 rounded-md px-2 py-1 text-[11px] focus:outline-none focus:border-primary" />
+    <textarea id="vm-message" rows="2" placeholder="Short description of your app / security need"
+              class="w-full bg-slate-900/80 border border-slate-700 rounded-md px-2 py-1 text-[11px] focus:outline-none focus:border-primary"></textarea>
+
+    <button type="submit"
+            class="w-full mt-1 py-2 bg-primary text-slate-950 text-[11px] font-semibold rounded-md">
+      Send details (demo only, no data stored)
+    </button>
+  </form>
 </div>
+
+<!-- ========================================================= -->
+<!-- 🔻 SCROLLING TICKER + LIVE NEWS / CVE FETCH -->
+<!-- ========================================================= -->
 
 <!-- SCROLLING TICKER -->
 <div class="fixed bottom-0 left-0 w-full bg-slate-950/90 border-t border-slate-700 py-2 overflow-hidden z-40 backdrop-blur">
@@ -184,64 +274,67 @@
   </div>
 </div>
 
-<!-- LIVE NEWS + CVE FETCH SCRIPT -->
+<!-- LIVE NEWS + CVE FETCH SCRIPT + CHAT LOGIC -->
 <script>
-// Fetch Cybersecurity News
+// -------- Cybersecurity News --------
 async function loadCyberNews() {
-  const container = document.getElementById("vm-news-list");
-  container.innerHTML = "Loading news…";
+  const container = document.getElementById("vm-news-list"); // may not exist now, so guard
+  if (container) container.innerHTML = "Loading news…";
 
   try {
     const res = await fetch("https://hn.algolia.com/api/v1/search?query=cyber%20security&tags=story");
     const data = await res.json();
 
-    container.innerHTML = "";
-    data.hits.slice(0, 8).forEach(n => {
-      container.innerHTML += `
-        <div>
-          <a href="${n.url}" target="_blank" class="text-primary font-medium hover:underline">
-            ${n.title}
-          </a>
-          <p class="text-slate-500 text-[10px]">${new Date(n.created_at).toLocaleDateString()}</p>
-        </div>
-      `;
-    });
+    if (container) {
+      container.innerHTML = "";
+      data.hits.slice(0, 8).forEach(n => {
+        container.innerHTML += `
+          <div>
+            <a href="${n.url}" target="_blank" class="text-primary font-medium hover:underline">
+              ${n.title}
+            </a>
+            <p class="text-slate-500 text-[10px]">${new Date(n.created_at).toLocaleDateString()}</p>
+          </div>
+        `;
+      });
+    }
 
     return data.hits.slice(0, 5).map(n => n.title);
   } catch {
-    container.innerHTML = "<p class='text-red-400'>Unable to load news.</p>";
+    if (container) container.innerHTML = "<p class='text-red-400'>Unable to load news.</p>";
     return [];
   }
 }
 
-// Fetch Latest CVEs — Public API, works in browser
+// -------- Latest CVEs (CIRCL, no key) --------
 async function loadCVEs() {
-  const container = document.getElementById("vm-cve-list");
-  container.innerHTML = "Loading CVEs…";
+  const container = document.getElementById("vm-cve-list"); // may not exist now, so guard
+  if (container) container.innerHTML = "Loading CVEs…";
 
   try {
     const res = await fetch("https://cve.circl.lu/api/last");
     const data = await res.json();
 
-    container.innerHTML = "";
-
-    data.slice(0, 10).forEach(cve => {
-      container.innerHTML += `
-        <div>
-          <span class="text-red-400 font-bold">${cve.id}</span>
-          <p class="text-slate-400 text-[10px]">${cve.summary.substring(0, 120)}...</p>
-        </div>
-      `;
-    });
+    if (container) {
+      container.innerHTML = "";
+      data.slice(0, 10).forEach(cve => {
+        container.innerHTML += `
+          <div>
+            <span class="text-red-400 font-bold">${cve.id}</span>
+            <p class="text-slate-400 text-[10px]">${cve.summary.substring(0, 120)}...</p>
+          </div>
+        `;
+      });
+    }
 
     return data.slice(0, 5).map(cve => cve.id);
   } catch {
-    container.innerHTML = "<p class='text-red-400'>Unable to load CVEs.</p>";
+    if (container) container.innerHTML = "<p class='text-red-400'>Unable to load CVEs.</p>";
     return [];
   }
 }
 
-// Build Scrolling Ticker
+// -------- Build Ticker --------
 async function updateTicker() {
   const ticker = document.getElementById("vm-ticker");
 
@@ -253,15 +346,105 @@ async function updateTicker() {
     ...cves.map(c => `⚠️ ${c}`)
   ];
 
-  ticker.innerText = combined.join("  •  ");
+  if (combined.length > 0) {
+    ticker.innerText = combined.join("  •  ");
+  } else {
+    ticker.innerText = "Unable to fetch latest cyber news at the moment.";
+  }
 }
 
-// Auto-run popup + ticker
-setTimeout(() => {
-  document.getElementById("vm-cyber-widget").style.display = "block";
-  updateTicker();
-}, 3000);
+// -------- Chatbot Logic --------
+const chatToggle = document.getElementById("vm-chat-toggle");
+const chatWidget = document.getElementById("vm-chat-widget");
+const chatClose = document.getElementById("vm-chat-close");
+const chatBody = document.getElementById("vm-chat-body");
 
+function vmAppendMessage(sender, text) {
+  const wrapper = document.createElement("div");
+  wrapper.className = "flex items-start gap-2";
+
+  if (sender === "user") {
+    wrapper.classList.add("justify-end");
+    wrapper.innerHTML = `
+      <div class="bg-primary/90 text-slate-950 rounded-lg px-3 py-2 max-w-[85%] ml-auto text-[11px]">
+        ${text}
+      </div>
+    `;
+  } else {
+    wrapper.innerHTML = `
+      <div class="mt-1 h-6 w-6 rounded-full bg-primary/20 border border-primary/60 flex items-center justify-center text-[10px] text-primary font-bold">
+        VM
+      </div>
+      <div class="bg-slate-800/80 rounded-lg px-3 py-2 max-w-[85%] text-[11px]">
+        ${text}
+      </div>
+    `;
+  }
+
+  chatBody.appendChild(wrapper);
+  chatBody.scrollTop = chatBody.scrollHeight;
+}
+
+function vmAskPreset(type) {
+  let qText = "";
+  let aText = "";
+
+  if (type === "services") {
+    qText = "What services do you offer?";
+    aText = "I focus on Web, Mobile (Android/iOS), and API penetration testing, mapped to OWASP Top 10, MASVS, OWASP API Top 10, and PCI DSS 4.0. I also support DevSecOps pipeline hardening and cloud configuration reviews for AWS and Azure.";
+  } else if (type === "process") {
+    qText = "How do you work with clients?";
+    aText = "I usually start with a short scoping call, review your architecture and environments, define test coverage, then execute manual testing supported by tools. Every finding includes PoC, impact, OWASP/PCI mapping, and remediation guidance. I also support retesting before go-live.";
+  } else if (type === "pci") {
+    qText = "Can you help with PCI DSS?";
+    aText = "Yes. I align testing and reporting with PCI DSS 4.0, especially requirements around secure software development, vulnerability management, authentication, and segmentation. Reports are structured so they can be used directly with your QSA or compliance team.";
+  } else if (type === "timeline") {
+    qText = "What is the typical testing timeline?";
+    aText = "For a focused web or mobile application, testing usually takes 3–7 working days depending on scope and environments, followed by a detailed report and review session. Larger scopes or multiple platforms are planned phase-wise.";
+  }
+
+  vmAppendMessage("user", qText);
+  vmAppendMessage("bot", aText);
+}
+
+function vmSubmitLead(event) {
+  event.preventDefault();
+
+  const name = document.getElementById("vm-name").value.trim();
+  const email = document.getElementById("vm-email").value.trim();
+  const project = document.getElementById("vm-project").value.trim();
+  const message = document.getElementById("vm-message").value.trim();
+
+  const summary = `
+Name: ${name || "Not provided"}<br>
+Email: ${email || "Not provided"}<br>
+App / Scope: ${project || "Not provided"}<br>
+Notes: ${message || "Not provided"}
+  `;
+
+  vmAppendMessage("user", "Sharing my project details.");
+  vmAppendMessage("bot",
+    "Thanks for sharing these details. This demo chatbot doesn’t store data, " +
+    "but this is how I typically capture scope before a formal security engagement:<br><br>" +
+    summary +
+    "<br><br>You can also email me directly at <strong>contact@vmsecops.com</strong> with logs, screenshots, or architecture diagrams."
+  );
+
+  // Simple reset
+  document.getElementById("vm-chat-form").reset();
+}
+
+// Toggle chat open/close
+chatToggle.addEventListener("click", () => {
+  chatWidget.classList.toggle("hidden");
+});
+
+chatClose.addEventListener("click", () => {
+  chatWidget.classList.add("hidden");
+});
+
+// Init ticker once page loads
+updateTicker();
 </script>
 
 </body>
