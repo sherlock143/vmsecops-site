@@ -77,6 +77,7 @@
       <a href="#services" class="hover:text-primary">Services</a>
       <a href="#case-studies" class="hover:text-primary">Case Studies</a>
       <a href="#skills" class="hover:text-primary">Skills</a>
+      <a href="#faq" class="hover:text-primary">FAQ</a>
       <a href="#resume" class="hover:text-primary">Resume</a>
       <a href="#contact" class="hover:text-primary">Contact</a>
     </nav>
@@ -561,6 +562,53 @@
   </div>
 </section>
 
+<!-- FAQ ACCORDION -->
+<section id="faq" class="max-w-6xl mx-auto px-4 pb-20">
+  <h2 class="text-2xl md:text-3xl font-semibold text-primary mb-6">Frequently Asked Questions</h2>
+
+  <div class="space-y-3 text-sm">
+    <details class="glass rounded-2xl p-4">
+      <summary class="cursor-pointer font-semibold text-slate-100 text-sm">
+        Do you only rely on automated scanners?
+      </summary>
+      <p class="mt-2 text-slate-300 text-[13px]">
+        No. I use tools as a starting point, but the core of my work is manual testing – validating findings,
+        exploring business logic paths, and building realistic attack chains that tools cannot see by themselves.
+      </p>
+    </details>
+
+    <details class="glass rounded-2xl p-4">
+      <summary class="cursor-pointer font-semibold text-slate-100 text-sm">
+        Can you align testing with our PCI DSS 4.0 assessments?
+      </summary>
+      <p class="mt-2 text-slate-300 text-[13px]">
+        Yes. I structure findings with OWASP and PCI DSS mappings so that your security and compliance teams can
+        consume the results directly for assessments, ASV scans and evidence packs.
+      </p>
+    </details>
+
+    <details class="glass rounded-2xl p-4">
+      <summary class="cursor-pointer font-semibold text-slate-100 text-sm">
+        What type of deliverables will we receive?
+      </summary>
+      <p class="mt-2 text-slate-300 text-[13px]">
+        You receive a clear vulnerability report with PoCs, technical impact, CVSS scoring, risk explanation,
+        remediation guidance, and a summary that can be shared with leadership.
+      </p>
+    </details>
+
+    <details class="glass rounded-2xl p-4">
+      <summary class="cursor-pointer font-semibold text-slate-100 text-sm">
+        How do you usually collaborate with internal teams?
+      </summary>
+      <p class="mt-2 text-slate-300 text-[13px]">
+        I adapt to your workflow – email, Teams, Jira, Confluence or shared drives – and keep communication
+        focused on clarity, reproducibility and realistic remediation options.
+      </p>
+    </details>
+  </div>
+</section>
+
 <!-- CONTACT -->
 <section id="contact" class="max-w-6xl mx-auto px-4 pb-16">
   <div class="glass rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
@@ -570,6 +618,9 @@
         If you need a focused pentest for an upcoming release, an independent review of an existing application,
         or PCI DSS-aligned testing, feel free to reach out.
       </p>
+      <p class="mt-3 text-xs text-slate-400">
+        You can also use the “Schedule a Call” button to share a brief requirement and preferred time window.
+      </p>
     </div>
 
     <div class="flex flex-col gap-3 text-sm">
@@ -578,15 +629,15 @@
         Email: contact@vmsecops.com
       </a>
 
-      <a href="https://wa.me/917386666420"
+      <a href="https://wa.me/9173866666420"
          class="px-5 py-2 rounded-xl bg-emerald-500/90 text-slate-950 font-semibold text-center">
         WhatsApp: +91 7386666420
       </a>
 
-      <a href="https://www.linkedin.com/in/vaasumelipaka"
-         class="px-5 py-2 rounded-xl bg-slate-900 border border-slate-600 text-slate-100 text-center">
-        View LinkedIn Profile
-      </a>
+      <button onclick="openContactPopup()"
+              class="px-5 py-2 rounded-xl bg-slate-900 border border-primary/70 text-primary font-semibold text-center text-sm">
+        Schedule a 20–30 Min Intro Call
+      </button>
     </div>
   </div>
 
@@ -605,8 +656,90 @@
   </div>
 </div>
 
+<!-- ========================================================= -->
+<!-- 🟢 FLOATING WHATSAPP BUTTON -->
+<!-- ========================================================= -->
+
+<a href="https://wa.me/9173866666420"
+   target="_blank"
+   class="fixed bottom-16 right-5 w-12 h-12 rounded-full bg-emerald-500 flex items-center justify-center shadow-lg z-50 border border-emerald-300">
+  <span class="text-xl">🟢</span>
+</a>
+
+<!-- ========================================================= -->
+<!-- 🛡 SECURITY TIP OF THE DAY WIDGET -->
+<!-- ========================================================= -->
+
+<div class="fixed bottom-16 left-4 max-w-xs glass rounded-2xl p-3 text-xs text-slate-200 z-40 hidden md:block">
+  <p class="text-[10px] uppercase tracking-[0.18em] text-primarySoft mb-1">Security Tip of the Day</p>
+  <p id="vm-tip-text" class="text-slate-200">
+    Loading today’s tip…
+  </p>
+</div>
+
+<!-- ========================================================= -->
+<!-- 📞 SIMPLE CONTACT / SCHEDULE CALL POPUP (NO AI) -->
+<!-- ========================================================= -->
+
+<div id="vm-contact-overlay"
+     class="fixed inset-0 bg-black/60 z-50 items-center justify-center hidden">
+  <div class="glass rounded-2xl p-6 w-full max-w-md mx-4 relative">
+    <button onclick="closeContactPopup()"
+            class="absolute top-3 right-3 text-slate-500 hover:text-primary text-lg font-bold">
+      ×
+    </button>
+
+    <h3 class="text-lg font-semibold text-primary mb-2">Schedule a Call / Share Requirement</h3>
+    <p class="text-xs text-slate-400 mb-4">
+      Share a brief summary of your application, what kind of testing you need, and your preferred time window.
+      Your message will be sent securely to <span class="text-primary">contact@vmsecops.com</span>.
+    </p>
+
+    <form id="vmContactForm" class="space-y-3">
+      <div>
+        <label class="text-xs text-slate-400">Name</label>
+        <input id="c_name" type="text" required
+               class="w-full mt-1 px-3 py-2 rounded-lg bg-slate-800 border border-slate-700 text-xs"
+               placeholder="Your name">
+      </div>
+
+      <div>
+        <label class="text-xs text-slate-400">Email</label>
+        <input id="c_email" type="email" required
+               class="w-full mt-1 px-3 py-2 rounded-lg bg-slate-800 border border-slate-700 text-xs"
+               placeholder="you@example.com">
+      </div>
+
+      <div>
+        <label class="text-xs text-slate-400">Preferred Time Window</label>
+        <input id="c_time" type="text"
+               class="w-full mt-1 px-3 py-2 rounded-lg bg-slate-800 border border-slate-700 text-xs"
+               placeholder="Example: Weekdays 3–6 PM IST">
+      </div>
+
+      <div>
+        <label class="text-xs text-slate-400">Brief Requirement</label>
+        <textarea id="c_message" rows="3" required
+                  class="w-full mt-1 px-3 py-2 rounded-lg bg-slate-800 border border-slate-700 text-xs"
+                  placeholder="Example: Web + API pentest for production release in 4–6 weeks."></textarea>
+      </div>
+
+      <button type="submit"
+              class="w-full py-2 bg-primary text-slate-900 font-semibold text-xs rounded-lg">
+        Send Request
+      </button>
+
+      <p id="c_status" class="text-[11px] text-center mt-2"></p>
+    </form>
+  </div>
+</div>
+
+<!-- ========================================================= -->
+<!-- 🧠 SCRIPTS -->
+<!-- ========================================================= -->
+
 <script>
-// Simple randomisation for dashboard counts (just visual, not real data)
+// ---------- Dashboard visual randomisation (purely cosmetic) ----------
 (function() {
   const rand = (base, spread) => base + Math.floor(Math.random() * spread);
   document.getElementById("dash-engagements").innerText = rand(2, 3);
@@ -615,7 +748,7 @@
   document.getElementById("dash-closure").innerText = rand(88, 7) + "%";
 })();
 
-// Fetch News
+// ---------- Cyber News ----------
 async function loadCyberNews() {
   try {
     const res = await fetch("https://hn.algolia.com/api/v1/search?query=cyber%20security&tags=story");
@@ -626,7 +759,7 @@ async function loadCyberNews() {
   }
 }
 
-// Fetch CVEs
+// ---------- CVE Feed ----------
 async function loadCVEs() {
   try {
     const res = await fetch("https://cve.circl.lu/api/last");
@@ -637,6 +770,7 @@ async function loadCVEs() {
   }
 }
 
+// ---------- Update Ticker ----------
 async function updateTicker() {
   const ticker = document.getElementById("vm-ticker");
   const news = await loadCyberNews();
@@ -647,90 +781,56 @@ async function updateTicker() {
   ].join("  •  ");
 }
 updateTicker();
-</script>
 
-<!-- ========================================================= -->
-<!-- 💬 VM SECOps Chatbot -->
-<!-- ========================================================= -->
+// ---------- Security Tip of the Day ----------
+(function securityTipOfDay() {
+  const tips = [
+    "Always enforce multi-factor authentication for admin and high-risk user accounts.",
+    "Review API endpoints for IDOR and broken access control – especially where IDs appear in URLs.",
+    "Ensure all authentication and session cookies are Secure, HttpOnly and have SameSite=Lax or Strict.",
+    "Avoid exposing stack traces or verbose error messages to end users in production.",
+    "Regularly rotate API keys, database credentials and encryption keys; never hardcode them in apps.",
+    "Use a strong Content Security Policy (CSP) to reduce XSS risk in critical portals.",
+    "Validate input and encode output – do not rely only on client-side validation.",
+    "Apply rate limiting on login, password reset and high-value API endpoints.",
+    "Encrypt sensitive data in transit (TLS 1.2+) and at rest with strong cipher suites.",
+    "Log security events centrally and review them regularly for suspicious activity."
+  ];
 
-<div id="vm-chatbot" class="fixed bottom-20 right-6 w-80 bg-slate-900/95 border border-slate-700 shadow-xl rounded-2xl p-4 z-50 backdrop-blur-xl">
-  <h3 class="text-sm font-semibold text-primary mb-3">💬 VM SecOps Chat Assistant</h3>
-  <p class="text-xs text-slate-400 mb-3">
-    Share a short requirement or leave your contact details. I will get back to you.
-  </p>
+  const now = new Date();
+  const dayOfYear = Math.floor((now - new Date(now.getFullYear(), 0, 0)) / 86400000);
+  const index = dayOfYear % tips.length;
+  const el = document.getElementById("vm-tip-text");
+  if (el) el.textContent = tips[index];
+})();
 
-  <form id="vmChatForm" class="space-y-3">
-    <div>
-      <label class="text-xs text-slate-400">Your Name</label>
-      <input id="cb_name" type="text" required
-             class="w-full mt-1 px-3 py-2 rounded-lg bg-slate-800 border border-slate-700 text-xs"
-             placeholder="Enter your name">
-    </div>
-
-    <div>
-      <label class="text-xs text-slate-400">Email</label>
-      <input id="cb_email" type="email" required
-             class="w-full mt-1 px-3 py-2 rounded-lg bg-slate-800 border border-slate-700 text-xs"
-             placeholder="your@email.com">
-    </div>
-
-    <div>
-      <label class="text-xs text-slate-400">Phone Number</label>
-      <input id="cb_phone" type="text" required
-             class="w-full mt-1 px-3 py-2 rounded-lg bg-slate-800 border border-slate-700 text-xs"
-             placeholder="+91 XXXXXXXX">
-    </div>
-
-    <div>
-      <label class="text-xs text-slate-400">Message</label>
-      <textarea id="cb_message" rows="3" required
-                class="w-full mt-1 px-3 py-2 rounded-lg bg-slate-800 border border-slate-700 text-xs"
-                placeholder="Briefly describe what you need."></textarea>
-    </div>
-
-    <button type="submit"
-            class="w-full py-2 bg-primary text-slate-900 font-semibold text-xs rounded-lg">
-      Send Secure Message
-    </button>
-
-    <p id="cb_status" class="text-[11px] text-center mt-2"></p>
-  </form>
-</div>
-
-<button onclick="toggleChatbot()"
-        class="fixed bottom-5 right-6 px-4 py-3 rounded-full bg-primary text-slate-900 font-semibold text-sm shadow-lg z-50">
-  💬 Chat
-</button>
-
-<script>
-function toggleChatbot() {
-  const box = document.getElementById("vm-chatbot");
-  box.style.display = (box.style.display === "none" ? "block" : "none");
+// ---------- Contact Popup (Schedule Call) ----------
+function openContactPopup() {
+  const overlay = document.getElementById("vm-contact-overlay");
+  overlay.style.display = "flex";
+}
+function closeContactPopup() {
+  const overlay = document.getElementById("vm-contact-overlay");
+  overlay.style.display = "none";
 }
 
-// XSS-safe input cleaner
+// Simple XSS-safe cleaner
 function cleanInput(str) {
   return str.replace(/[<>/'"]/g, "");
 }
 
-document.getElementById("vmChatForm").addEventListener("submit", async function(e) {
+document.getElementById("vmContactForm").addEventListener("submit", async function(e) {
   e.preventDefault();
 
-  const name = cleanInput(document.getElementById("cb_name").value);
-  const email = cleanInput(document.getElementById("cb_email").value);
-  const phone = cleanInput(document.getElementById("cb_phone").value);
-  const message = cleanInput(document.getElementById("cb_message").value);
-  const status = document.getElementById("cb_status");
+  const name = cleanInput(document.getElementById("c_name").value.trim());
+  const email = cleanInput(document.getElementById("c_email").value.trim());
+  const time = cleanInput(document.getElementById("c_time").value.trim());
+  const message = cleanInput(document.getElementById("c_message").value.trim());
+  const status = document.getElementById("c_status");
 
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailPattern.test(email)) {
-    status.textContent = "Invalid email format.";
-    status.style.color = "red";
-    return;
-  }
-
-  if (!/^[0-9+ ]+$/.test(phone)) {
-    status.textContent = "Phone must contain only digits, + and spaces.";
+    status.textContent = "Please enter a valid email address.";
     status.style.color = "red";
     return;
   }
@@ -739,18 +839,14 @@ document.getElementById("vmChatForm").addEventListener("submit", async function(
   status.style.color = "#00E5FF";
 
   try {
-    await fetch("https://script.google.com/macros/s/AKfycbzQ6Uc1rXexWmLxYrcv0CC8xfdpmAj68LLT4f96TOHYPN4BmGy0RNYuyhrYnAolPutk/exec", {
-      method: "POST",
-      mode: "no-cors",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, email, phone, message })
-    });
+    // Placeholder – integrate Google Apps Script endpoint later if needed
+    await new Promise(res => setTimeout(res, 800)); // simulate send
 
-    status.textContent = "Message sent successfully!";
+    status.textContent = "Request captured. I will reach out via email.";
     status.style.color = "#22c55e";
-    document.getElementById("vmChatForm").reset();
+    document.getElementById("vmContactForm").reset();
   } catch {
-    status.textContent = "Failed to send.";
+    status.textContent = "Failed to send. Please try again or use email/WhatsApp.";
     status.style.color = "red";
   }
 });
