@@ -1,543 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <title>VM SecOps – Vasu Melipaka | Security Analyst & Pentester</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+    <title>VM SecOps – Vasu Melipaka | Security Analyst & Pentester</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- SEO -->
+    <meta name="description" content="VM SecOps – Professional Web, Mobile & API Penetration Testing by Vasu Melipaka. PCI DSS, MASVS & OWASP aligned security services.">
+    <meta name="keywords" content="VM SecOps, Vasu Melipaka, penetration testing, mobile security, appsec, PCI DSS, MASVS, OWASP, API pentest, cyber security">
+    <meta name="author" content="Vasu Melipaka">
 
-  <!-- Tailwind CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            primary: '#00E5FF',
-            primarySoft: '#0EA5E9',
-            accent: '#22C55E',
-            bgDark: '#020617',
-            bgCard: '#020617',
-          }
+    <!-- Prevent Google showing phone number -->
+    <meta name="googlebot" content="nosnippet">
+    <meta name="robots" content="index,follow">
+
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="interest-cohort=()">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="VM SecOps – Security Analyst & Pentester">
+    <meta property="og:description" content="Web, Mobile, API Pentesting | PCI DSS | MASVS | OWASP">
+    <meta property="og:image" content="https://vmsecops.com/vasu.jpg">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://vmsecops.com">
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Vasu Melipaka",
+      "url": "https://vmsecops.com",
+      "jobTitle": "Security Analyst & Pentester",
+      "description": "Web, Mobile, API security specialist with PCI DSS & MASVS expertise."
+    }
+    </script>
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#00E5FF',
+                        primarySoft: '#0EA5E9',
+                        bgDark: '#020617'
+                    }
+                }
+            }
         }
-      }
-    }
-  </script>
+    </script>
 
-  <style>
-    html {
-      scroll-behavior: smooth;
-    }
-    body {
-      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    }
+    <!-- Smooth Scroll + Parallax + Fade Animations -->
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
 
-    .glass {
-      background: rgba(15, 23, 42, 0.9);
-      backdrop-filter: blur(18px);
-      border: 1px solid rgba(148, 163, 184, 0.25);
-    }
+        body {
+            font-family: "Poppins", sans-serif;
+        }
 
-    .grid-bg {
-      background-image: radial-gradient(circle at 1px 1px, rgba(148,163,184,0.12) 1px, transparent 0);
-      background-size: 32px 32px;
-    }
+        /* Background grid */
+        .grid-bg {
+            background-image: radial-gradient(circle at 1px 1px, rgba(148,163,184,0.12) 1px, transparent 0);
+            background-size: 32px 32px;
+        }
 
-    /* Ticker */
-    @keyframes marquee {
-      0% { transform: translateX(100%); }
-      100% { transform: translateX(-100%); }
-    }
-    .animate-marquee {
-      display: inline-block;
-      animation: marquee 30s linear infinite;
-    }
+        /* Fade + Slide Animation */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: 0.9s ease;
+        }
 
-    /* Scroll reveal: fade + slide up */
-    .fade-section {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.7s ease-out, transform 0.7s ease-out;
-    }
-    .fade-section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+        .fade-up.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-    /* For cards appearing with small delay */
-    .fade-delay-1 { transition-delay: 0.08s; }
-    .fade-delay-2 { transition-delay: 0.16s; }
-    .fade-delay-3 { transition-delay: 0.24s; }
-  </style>
+        /* Parallax Hero */
+        .parallax {
+            background-attachment: fixed !important;
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* WhatsApp floating button */
+        .floating-whatsapp {
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, .4);
+            z-index: 999;
+            cursor: pointer;
+        }
+
+        .floating-whatsapp img {
+            width: 32px;
+            height: 32px;
+        }
+    </style>
 </head>
 
 <body class="bg-gradient-to-br from-slate-950 via-slate-900 to-black text-slate-100 grid-bg">
 
 <!-- NAVBAR -->
-<header class="sticky top-0 z-30 bg-slate-950/80 backdrop-blur border-b border-slate-800">
-  <div class="max-w-6xl mx-auto flex items-center justify-between px-4 py-3">
-    <div class="flex items-center gap-2">
-      <div class="h-8 w-8 rounded-xl bg-primary/20 border border-primary/60 flex items-center justify-center text-primary text-xs font-semibold">
-        VM
-      </div>
-      <div>
-        <p class="text-xs tracking-[0.25em] text-slate-400 uppercase">VM SecOps</p>
-        <p class="text-xs text-slate-500">Security | Pentesting | DevSecOps</p>
-      </div>
-    </div>
+<header class="sticky top-0 z-40 bg-slate-950/80 backdrop-blur border-b border-slate-800 fade-up">
+    <div class="max-w-6xl mx-auto flex items-center justify-between px-4 py-3">
+        <div class="flex items-center gap-2">
+            <div class="h-8 w-8 rounded-xl bg-primary/20 border border-primary/60 flex items-center justify-center text-primary text-xs font-semibold">
+                VM
+            </div>
+            <div>
+                <p class="text-xs tracking-[0.25em] text-slate-400 uppercase">VM SecOps</p>
+                <p class="text-[11px] text-slate-500">Security | Pentesting | DevSecOps</p>
+            </div>
+        </div>
 
-    <nav class="hidden md:flex items-center gap-6 text-sm">
-      <a href="#top" class="hover:text-primary">Home</a>
-      <a href="#profile" class="hover:text-primary">Profile</a>
-      <a href="#dashboard" class="hover:text-primary">Dashboard</a>
-      <a href="#services" class="hover:text-primary">Services</a>
-      <a href="#case-studies" class="hover:text-primary">Case Studies</a>
-      <a href="#skills" class="hover:text-primary">Skills</a>
-      <a href="#contact" class="hover:text-primary">Contact</a>
-    </nav>
-  </div>
+        <nav class="hidden md:flex items-center gap-6 text-sm">
+            <a href="#top" class="hover:text-primary">Home</a>
+            <a href="#profile" class="hover:text-primary">Profile</a>
+            <a href="#services" class="hover:text-primary">Services</a>
+            <a href="#skills" class="hover:text-primary">Skills</a>
+            <a href="#contact" class="hover:text-primary">Contact</a>
+        </nav>
+    </div>
 </header>
 
 <!-- HERO -->
-<section id="top" class="max-w-6xl mx-auto px-4 pt-10 pb-24 md:pt-16 fade-section">
-  <div class="flex flex-col md:flex-row items-center gap-10 md:gap-14">
+<section id="top" class="max-w-6xl mx-auto px-4 pt-14 pb-24 fade-up parallax"
+style="background-image:url('https://images.unsplash.com/photo-1600267185393-e158a98703de?q=80'); background-size:cover; background-position:center; border-radius:20px;">
+    <div class="backdrop-blur-xl bg-slate-900/60 p-10 rounded-2xl shadow-xl">
 
-    <!-- TEXT -->
-    <div class="flex-1">
-      <p class="text-xs tracking-[0.3em] text-primarySoft uppercase mb-3">
-        Senior Security Analyst · Offensive Security
-      </p>
-      <h1 class="text-4xl md:text-5xl font-semibold text-primary drop-shadow-md">
-        Vasu Melipaka
-      </h1>
+        <p class="text-xs tracking-[0.3em] text-primarySoft uppercase mb-3">Senior Security Analyst · Offensive Security</p>
+        <h1 class="text-4xl md:text-5xl font-semibold text-primary drop-shadow-md">Vasu Melipaka</h1>
 
-      <p class="mt-3 text-sm md:text-base text-slate-300 leading-relaxed max-w-xl">
-        I help organizations strengthen their Web, Mobile (Android/iOS) and API security through
-        deep, manual penetration testing aligned with OWASP, MASVS and PCI DSS 4.0. I focus on
-        realistic attack paths and business impact, not just automated scanner output.
-      </p>
+        <p class="mt-3 text-sm md:text-lg text-slate-300 leading-relaxed max-w-xl">
+            I help organizations improve Web, Mobile (Android/iOS) & API security by performing deep manual penetration testing aligned with OWASP, MASVS & PCI DSS 4.0.
+        </p>
 
-      <div class="mt-7 flex flex-wrap gap-4">
-        <a href="#profile"
-           class="px-5 py-3 rounded-xl bg-primary text-slate-950 font-semibold text-sm shadow-lg shadow-cyan-500/30">
-          About Vasu
-        </a>
-        <a href="#services"
-           class="px-5 py-3 rounded-xl border border-primary/70 text-primary font-semibold text-sm hover:bg-primary/10">
-          Security Services for Your Business
-        </a>
-      </div>
-
-      <div class="mt-5 flex flex-wrap gap-2 text-[11px] text-slate-400">
-        <span class="px-3 py-1 rounded-full bg-slate-900/70 border border-slate-700">Web & API Pentesting</span>
-        <span class="px-3 py-1 rounded-full bg-slate-900/70 border border-slate-700">Mobile Security (MASVS)</span>
-        <span class="px-3 py-1 rounded-full bg-slate-900/70 border border-slate-700">PCI DSS 4.0 Aligned</span>
-      </div>
-
-      <a href="https://www.linkedin.com/in/vaasumelipaka"
-         class="inline-block mt-5 px-5 py-2 rounded-xl bg-slate-900 border border-slate-700 text-slate-200 text-sm">
-        View LinkedIn Profile →
-      </a>
-    </div>
-
-    <!-- PHOTO with parallax -->
-    <div class="flex-1 flex justify-center md:justify-end">
-      <div id="hero-parallax"
-           class="relative w-64 h-64 md:w-72 md:h-72 rounded-3xl glass shadow-[0_0_80px_rgba(34,211,238,0.35)] flex items-center justify-center">
-        <img
-          src="https://media.licdn.com/dms/image/v2/D5603AQGsPi39qzGTuw/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1724678006163?e=1765411200&v=beta&t=GUMLXMFnAeRJz82qGWuObJr6Xoz-gJhaXrykxPJcn0A"
-          alt="Vasu Melipaka"
-          class="w-[92%] h-[92%] object-cover rounded-2xl border border-slate-700/80" />
-
-        <div class="absolute -top-3 -left-3 px-3 py-1 rounded-full bg-emerald-500 text-xs text-slate-950 font-semibold shadow-lg">
-          Available for consulting
+        <div class="mt-7 flex flex-wrap gap-4">
+            <a href="#profile" class="px-5 py-3 rounded-xl bg-primary text-slate-950 font-semibold text-sm">About Vasu</a>
+            <a href="#services" class="px-5 py-3 rounded-xl border border-primary text-primary font-semibold text-sm hover:bg-primary/10">Security Services</a>
         </div>
-        <div class="absolute -bottom-3 -right-3 px-3 py-1 rounded-full bg-slate-900/90 text-[11px] border border-slate-600">
-          6+ yrs Cybersecurity · 11+ yrs IT
-        </div>
-      </div>
-    </div>
 
-  </div>
+    </div>
 </section>
 
-<!-- PROFILE -->
-<section id="profile" class="max-w-6xl mx-auto px-4 pb-20 fade-section">
-  <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
-    <h2 class="text-2xl md:text-3xl font-semibold text-primary">Profile Summary</h2>
-    <p class="text-xs md:text-sm text-slate-400">
-      High-impact, manual security assessments for Web, Mobile & APIs.
-    </p>
-  </div>
-
-  <div class="grid md:grid-cols-2 gap-6">
-    <div class="glass rounded-2xl p-6">
-      <h3 class="text-lg font-semibold text-slate-100 mb-2">Who I Am</h3>
-      <p class="text-sm text-slate-300 leading-relaxed">
-        Senior Security Analyst specializing in penetration testing for Web, Mobile and API platforms.
-        I combine offensive security techniques with a strong understanding of business workflows, helping
-        leaders understand the real impact behind each vulnerability.
-      </p>
-      <p class="mt-3 text-sm text-slate-300 leading-relaxed">
-        I work closely with engineering, QA and architecture teams to embed security into SDLC checkpoints
-        instead of treating it as a last-minute approval gate.
-      </p>
-    </div>
-
-    <div class="glass rounded-2xl p-6">
-      <h3 class="text-lg font-semibold text-slate-100 mb-2">What I Deliver</h3>
-      <ul class="text-sm text-slate-300 space-y-2 leading-relaxed">
-        <li>• Evidence-backed findings with clear PoCs and reproduction steps.</li>
-        <li>• OWASP, MASVS and PCI DSS 4.0 control mapping for compliance teams.</li>
-        <li>• CVSS-based risk ratings with business-friendly explanation.</li>
-        <li>• Developer-ready remediation guidance and configuration examples.</li>
-        <li>• Retesting and closure validation for production readiness.</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- DASHBOARD -->
-<section id="dashboard" class="max-w-6xl mx-auto px-4 pb-20 fade-section">
-  <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
-    <h2 class="text-2xl md:text-3xl font-semibold text-primary">Pentest Snapshot</h2>
-    <p class="text-xs md:text-sm text-slate-400">
-      A simple view of how I track risk, coverage and delivery.
-    </p>
-  </div>
-
-  <div class="grid md:grid-cols-4 gap-4 text-sm">
-    <div class="glass rounded-2xl p-4 text-center fade-section fade-delay-1">
-      <p class="text-[11px] text-slate-400">Active Engagements</p>
-      <p id="dash-engagements" class="text-2xl font-semibold text-primary mt-1">3</p>
-      <p class="text-[11px] text-slate-500 mt-1">Web · Mobile · API</p>
-    </div>
-    <div class="glass rounded-2xl p-4 text-center fade-section fade-delay-2">
-      <p class="text-[11px] text-slate-400">Findings (Last 30 Days)</p>
-      <p id="dash-findings" class="text-2xl font-semibold text-primary mt-1">27</p>
-      <p class="text-[11px] text-slate-500 mt-1">Across all severities</p>
-    </div>
-    <div class="glass rounded-2xl p-4 text-center fade-section fade-delay-3">
-      <p class="text-[11px] text-slate-400">High / Critical</p>
-      <p id="dash-high" class="text-2xl font-semibold text-red-400 mt-1">8</p>
-      <p class="text-[11px] text-slate-500 mt-1">Prioritised with owners</p>
-    </div>
-    <div class="glass rounded-2xl p-4 text-center fade-section fade-delay-3">
-      <p class="text-[11px] text-slate-400">Retest Closure Rate</p>
-      <p id="dash-closure" class="text-2xl font-semibold text-emerald-400 mt-1">92%</p>
-      <p class="text-[11px] text-slate-500 mt-1">Confirmed and verified</p>
-    </div>
-  </div>
-
-  <div class="grid md:grid-cols-3 gap-6 mt-6 text-sm">
-    <div class="glass rounded-2xl p-5 fade-section">
-      <h3 class="font-semibold text-slate-100 mb-2">Risk Coverage</h3>
-      <ul class="text-slate-300 space-y-1 text-[13px]">
-        <li>• OWASP Web Top 10</li>
-        <li>• OWASP API Top 10</li>
-        <li>• OWASP MASVS (M1–M10)</li>
-        <li>• TLS / HTTP security headers</li>
-        <li>• Authentication & session management</li>
-      </ul>
-    </div>
-    <div class="glass rounded-2xl p-5 fade-section">
-      <h3 class="font-semibold text-slate-100 mb-2">Engagement Style</h3>
-      <ul class="text-slate-300 space-y-1 text-[13px]">
-        <li>• Threat-driven test planning</li>
-        <li>• Manual verification of scanner output</li>
-        <li>• Clear separation of false positives</li>
-        <li>• Regular touchpoints with dev & QA</li>
-        <li>• Executive-ready summaries for leadership</li>
-      </ul>
-    </div>
-    <div class="glass rounded-2xl p-5 fade-section">
-      <h3 class="font-semibold text-slate-100 mb-2">Ideal Use Cases</h3>
-      <ul class="text-slate-300 space-y-1 text-[13px]">
-        <li>• Pre-production security sign-off</li>
-        <li>• PCI DSS 4.0 readiness for web & mobile</li>
-        <li>• New feature / release hardening</li>
-        <li>• Independent review of internal findings</li>
-        <li>• Executive visibility into true risk</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- SERVICES -->
-<section id="services" class="max-w-6xl mx-auto px-4 pb-20 fade-section">
-  <h2 class="text-2xl md:text-3xl font-semibold text-primary mb-6">Security Services</h2>
-
-  <div class="grid md:grid-cols-3 gap-6 text-sm">
-    <div class="glass rounded-2xl p-5 border border-primary/30 fade-section fade-delay-1">
-      <h3 class="font-semibold text-slate-100 mb-2">Web Application Pentesting</h3>
-      <p class="text-slate-300">
-        Deep testing for authentication flaws, broken access control, IDOR, session weaknesses and
-        business logic gaps before production.
-      </p>
-    </div>
-
-    <div class="glass rounded-2xl p-5 fade-section fade-delay-2">
-      <h3 class="font-semibold text-slate-100 mb-2">Mobile App Security</h3>
-      <p class="text-slate-300">
-        MASVS-aligned assessments for Android & iOS – storage, API usage, reverse engineering and
-        runtime protections.
-      </p>
-    </div>
-
-    <div class="glass rounded-2xl p-5 fade-section fade-delay-3">
-      <h3 class="font-semibold text-slate-100 mb-2">API Security</h3>
-      <p class="text-slate-300">
-        Coverage for BOLA/BFLA, JWT handling, rate limiting, replay and abuse scenarios across
-        microservices and gateways.
-      </p>
-    </div>
-
-    <div class="glass rounded-2xl p-5 fade-section">
-      <h3 class="font-semibold text-slate-100 mb-2">DevSecOps Advisory</h3>
-      <p class="text-slate-300">
-        SAST, SCA and secrets scanning integration into CI/CD pipelines with meaningful quality gates
-        and low noise for developers.
-      </p>
-    </div>
-
-    <div class="glass rounded-2xl p-5 fade-section">
-      <h3 class="font-semibold text-slate-100 mb-2">Cloud & Platform Review</h3>
-      <p class="text-slate-300">
-        IAM, storage, network and perimeter checks to reduce unexpected exposure of internal services
-        in AWS / Azure environments.
-      </p>
-    </div>
-
-    <div class="glass rounded-2xl p-5 fade-section">
-      <h3 class="font-semibold text-slate-100 mb-2">Retesting & Advisory</h3>
-      <p class="text-slate-300">
-        Fix validation, ticket-level review and continuous advisory support for future releases and
-        security enhancements.
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- CASE STUDIES -->
-<section id="case-studies" class="max-w-6xl mx-auto px-4 pb-20 fade-section">
-  <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
-    <h2 class="text-2xl md:text-3xl font-semibold text-primary">Sample Engagements</h2>
-    <p class="text-xs md:text-sm text-slate-400">
-      High-level examples of how I approach different environments.
-    </p>
-  </div>
-
-  <div class="grid md:grid-cols-3 gap-6 text-sm">
-    <div class="glass rounded-2xl p-5 fade-section fade-delay-1">
-      <h3 class="font-semibold text-slate-100 mb-1">Fintech Web Portal</h3>
-      <p class="text-slate-300 text-[13px]">
-        Full-stack web assessment for a finance portal handling onboarding and payments. Identified
-        broken access control and session handling issues before production rollout.
-      </p>
-    </div>
-    <div class="glass rounded-2xl p-5 fade-section fade-delay-2">
-      <h3 class="font-semibold text-slate-100 mb-1">Mobile App + API</h3>
-      <p class="text-slate-300 text-[13px]">
-        Assessed Android/iOS app and supporting APIs against OWASP MASVS and API Top 10, focusing on
-        authentication flows, data protection and runtime protections.
-      </p>
-    </div>
-    <div class="glass rounded-2xl p-5 fade-section fade-delay-3">
-      <h3 class="font-semibold text-slate-100 mb-1">PCI DSS Readiness</h3>
-      <p class="text-slate-300 text-[13px]">
-        Supported a payment-focused product team with web and mobile security validation mapped to
-        PCI DSS 4.0, enabling smoother compliance review and audit discussions.
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- SKILLS & TOOLS -->
-<section id="skills" class="max-w-6xl mx-auto px-4 pb-20 fade-section">
-  <h2 class="text-2xl md:text-3xl font-semibold text-primary mb-6">Skills & Tooling</h2>
-
-  <div class="glass rounded-2xl p-6 text-sm">
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="fade-section fade-delay-1">
-        <h3 class="font-semibold text-slate-100 mb-2">Application Security</h3>
-        <div class="flex flex-wrap gap-2 text-[11px] text-slate-300">
-          <span class="px-3 py-1 rounded-full bg-slate-900/70 border border-slate-700">OWASP Web Top 10</span>
-          <span class="px-3 py-1 rounded-full bg-slate-900/70 border border-slate-700">IDOR / BAC</span>
-          <span class="px-3 py-1 rounded-full bg-slate-900/70 border border-slate-700">Session Management</span>
-          <span class="px-3 py-1 rounded-full bg-slate-900/70 border border-slate-700">CORS / CSRF</span>
-        </div>
-      </div>
-      <div class="fade-section fade-delay-2">
-        <h3 class="font-semibold text-slate-100 mb-2">Mobile & API</h3>
-        <div class="flex flex-wrap gap-2 text-[11px] text-slate-300">
-          <span class="px-3 py-1 rounded-full bg-slate-900/70 border border-slate-700">MASVS M1–M10</span>
-          <span class="px-3 py-1 rounded-full bg-slate-900/70 border border-slate-700">OWASP API Top 10</span>
-          <span class="px-3 py-1 rounded-full bg-slate-900/70 border border-slate-700">MobSF / Frida / Objection</span>
-          <span class="px-3 py-1 rounded-full bg-slate-900/70 border border-slate-700">Burp Suite</span>
-        </div>
-      </div>
-      <div class="fade-section fade-delay-3">
-        <h3 class="font-semibold text-slate-100 mb-2">Governance & DevSecOps</h3>
-        <div class="flex flex-wrap gap-2 text-[11px] text-slate-300">
-          <span class="px-3 py-1 rounded-full bg-slate-900/70 border border-slate-700">PCI DSS 4.0</span>
-          <span class="px-3 py-1 rounded-full bg-slate-900/70 border border-slate-700">Secure SDLC</span>
-          <span class="px-3 py-1 rounded-full bg-slate-900/70 border border-slate-700">SAST / SCA</span>
-          <span class="px-3 py-1 rounded-full bg-slate-900/70 border border-slate-700">Cloud Security (AWS/Azure)</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ACTIVITY SNAPSHOT -->
-<section id="activity" class="max-w-6xl mx-auto px-4 pb-20 fade-section">
-  <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
-    <h2 class="text-2xl md:text-3xl font-semibold text-primary">Portfolio Activity Snapshot</h2>
-    <p class="text-xs md:text-sm text-slate-400">
-      High-level view of the type of work I typically handle.
-    </p>
-  </div>
-
-  <div class="grid md:grid-cols-4 gap-4 text-sm">
-    <div class="glass rounded-2xl p-4 text-center fade-section fade-delay-1">
-      <p class="text-[11px] text-slate-400">Web Applications</p>
-      <p class="text-2xl font-semibold text-primary mt-1">40+</p>
-      <p class="text-[11px] text-slate-500 mt-1">Portals & dashboards</p>
-    </div>
-    <div class="glass rounded-2xl p-4 text-center fade-section fade-delay-2">
-      <p class="text-[11px] text-slate-400">Mobile Apps</p>
-      <p class="text-2xl font-semibold text-primary mt-1">20+</p>
-      <p class="text-[11px] text-slate-500 mt-1">Android & iOS</p>
-    </div>
-    <div class="glass rounded-2xl p-4 text-center fade-section fade-delay-3">
-      <p class="text-[11px] text-slate-400">APIs</p>
-      <p class="text-2xl font-semibold text-primary mt-1">50+</p>
-      <p class="text-[11px] text-slate-500 mt-1">Public & internal</p>
-    </div>
-    <div class="glass rounded-2xl p-4 text-center fade-section fade-delay-3">
-      <p class="text-[11px] text-slate-400">PCI DSS-Focused</p>
-      <p class="text-2xl font-semibold text-primary mt-1">Multiple</p>
-      <p class="text-[11px] text-slate-500 mt-1">Web, mobile & APIs</p>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="max-w-6xl mx-auto px-4 pb-16 fade-section">
-  <div class="glass rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-    <div>
-      <h2 class="text-2xl font-semibold text-primary mb-2">Let’s Talk Security</h2>
-      <p class="text-sm text-slate-300 max-w-xl">
-        If you need a focused pentest for an upcoming release, an independent review of an existing
-        application, or PCI DSS-aligned testing, feel free to reach out.
-      </p>
-    </div>
-
-    <div class="flex flex-col gap-3 text-sm">
-      <a href="mailto:contact@vmsecops.com"
-         class="px-5 py-2 rounded-xl bg-primary text-slate-950 font-semibold text-center">
-        Email: contact@vmsecops.com
-      </a>
-
-      <a href="https://wa.me/917386666420"
-         class="px-5 py-2 rounded-xl bg-emerald-500/90 text-slate-950 font-semibold text-center">
-        WhatsApp: +91 7386666420
-      </a>
-
-      <a href="https://www.linkedin.com/in/vaasumelipaka"
-         class="px-5 py-2 rounded-xl bg-slate-900 border border-slate-600 text-slate-100 text-center">
-        View LinkedIn Profile
-      </a>
-    </div>
-  </div>
-
-  <p class="mt-6 text-[11px] text-slate-500 text-center">
-    © 2025 VM SecOps – Portfolio & Security Services by Vasu Melipaka.
-  </p>
-</section>
-
-<!-- ========================================================= -->
-<!-- 🔥 LIVE CYBER NEWS + CVE TICKER (unchanged behaviour) -->
-<!-- ========================================================= -->
-<div class="fixed bottom-0 left-0 w-full bg-slate-950/90 border-t border-slate-700 py-2 overflow-hidden z-40 backdrop-blur">
-  <div id="vm-ticker" class="whitespace-nowrap text-primary text-xs font-semibold animate-marquee">
-    Fetching real-time cybersecurity updates…
-  </div>
-</div>
-
-<script>
-/* Simple randomisation for dashboard counts (visual only) */
-(function() {
-  const rand = (base, spread) => base + Math.floor(Math.random() * spread);
-  document.getElementById("dash-engagements").innerText = rand(2, 3);
-  document.getElementById("dash-findings").innerText = rand(20, 15);
-  document.getElementById("dash-high").innerText = rand(5, 6);
-  document.getElementById("dash-closure").innerText = rand(88, 7) + "%";
-})();
-
-/* Fetch cyber news */
-async function loadCyberNews() {
-  try {
-    const res = await fetch("https://hn.algolia.com/api/v1/search?query=cyber%20security&tags=story");
-    const data = await res.json();
-    return data.hits.slice(0, 5).map(n => n.title);
-  } catch {
-    return ["Cyber news unavailable"];
-  }
-}
-
-/* Fetch CVEs */
-async function loadCVEs() {
-  try {
-    const res = await fetch("https://cve.circl.lu/api/last");
-    const data = await res.json();
-    return data.slice(0, 5).map(cve => cve.id);
-  } catch {
-    return ["CVE feed unavailable"];
-  }
-}
-
-/* Update ticker text */
-async function updateTicker() {
-  const ticker = document.getElementById("vm-ticker");
-  const news = await loadCyberNews();
-  const cves = await loadCVEs();
-  ticker.innerText = [
-    ...news.map(n => `📰 ${n}`),
-    ...cves.map(c => `⚠️ ${c}`)
-  ].join("  •  ");
-}
-updateTicker();
-
-/* Scroll reveal: Intersection Observer */
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-      }
-    });
-  },
-  { threshold: 0.18 }
-);
-
-// Attach to all .fade-section elements
-document.querySelectorAll(".fade-section").forEach(el => {
-  observer.observe(el);
-});
-
-/* Parallax effect for hero photo */
-window.addEventListener("scroll", () => {
-  const hero = document.getElementById("hero-parallax");
-  if (!hero) return;
-  const offset = window.scrollY * 0.12; // subtle parallax
-  hero.style.transform = `translateY(${offset * -0.2}px)`;
-});
-</script>
-
-</body>
-</html>
+<!-- FLOATING WHATSAPP BUTTON -->
+<a href="https://wa.me/9173866666420" class="floating-whatsapp" aria-label="Chat on WhatsApp">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
+</a>
