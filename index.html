@@ -308,6 +308,324 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--td);letter-spacing:0
 .risk-h{background:rgba(255,184,0,0.12);color:var(--c4);border:1px solid rgba(255,184,0,0.3)}
 .risk-m{background:rgba(0,255,209,0.08);color:var(--c);border:1px solid rgba(0,255,209,0.2)}
 
+/* ════════════════════════════════════════
+   CHATBOT WIDGET
+════════════════════════════════════════ */
+
+/* Floating trigger button */
+#cb-trigger {
+  position: fixed;
+  bottom: 80px;
+  right: 28px;
+  z-index: 600;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  border: 1px solid var(--border2);
+  background: linear-gradient(135deg, rgba(123,92,255,0.9), rgba(0,255,209,0.7));
+  box-shadow: 0 0 0 0 rgba(0,255,209,0.4);
+  cursor: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+  animation: cb-pulse 3s ease-in-out infinite;
+}
+#cb-trigger:hover { transform: scale(1.1); box-shadow: 0 0 40px rgba(0,255,209,0.5); }
+@keyframes cb-pulse {
+  0%,100%{box-shadow:0 0 0 0 rgba(0,255,209,0.4),0 8px 32px rgba(123,92,255,0.4)}
+  50%{box-shadow:0 0 0 12px rgba(0,255,209,0),0 8px 32px rgba(123,92,255,0.6)}
+}
+#cb-trigger svg { width: 26px; height: 26px; transition: all 0.3s; }
+#cb-trigger .icon-chat { opacity: 1; }
+#cb-trigger .icon-close { opacity: 0; position: absolute; }
+#cb-trigger.open .icon-chat { opacity: 0; }
+#cb-trigger.open .icon-close { opacity: 1; }
+.cb-notif {
+  position: absolute;
+  top: -4px; right: -4px;
+  width: 18px; height: 18px;
+  background: var(--c2);
+  border-radius: 50%;
+  border: 2px solid var(--bg);
+  font-family: var(--mono);
+  font-size: 9px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  animation: notif-in 0.4s cubic-bezier(0.34,1.56,0.64,1);
+}
+@keyframes notif-in { from{transform:scale(0)} to{transform:scale(1)} }
+
+/* Chat window */
+#cb-window {
+  position: fixed;
+  bottom: 154px;
+  right: 28px;
+  z-index: 599;
+  width: 400px;
+  max-height: 600px;
+  display: flex;
+  flex-direction: column;
+  background: rgba(4,10,18,0.97);
+  border: 1px solid rgba(123,92,255,0.35);
+  border-radius: 20px;
+  overflow: hidden;
+  backdrop-filter: blur(24px);
+  box-shadow: 0 40px 120px rgba(0,0,0,0.7), 0 0 0 1px rgba(0,255,209,0.05), 0 0 60px rgba(123,92,255,0.15);
+  transform: translateY(20px) scale(0.96);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.35s cubic-bezier(0.34,1.2,0.64,1);
+}
+#cb-window.open {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* Chat header */
+.cb-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 20px;
+  background: linear-gradient(135deg, rgba(123,92,255,0.15), rgba(0,255,209,0.05));
+  border-bottom: 1px solid rgba(123,92,255,0.2);
+  flex-shrink: 0;
+}
+.cb-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--c3), var(--c));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+  position: relative;
+}
+.cb-avatar::after {
+  content: '';
+  position: absolute;
+  bottom: 1px; right: 1px;
+  width: 10px; height: 10px;
+  background: #00E87D;
+  border-radius: 50%;
+  border: 2px solid rgba(4,10,18,0.97);
+  box-shadow: 0 0 6px #00E87D;
+  animation: blink 2s ease infinite;
+}
+.cb-header-info { flex: 1; }
+.cb-name {
+  font-family: var(--body);
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+}
+.cb-status {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: #00E87D;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+.cb-header-badge {
+  font-family: var(--mono);
+  font-size: 9px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: rgba(123,92,255,0.15);
+  border: 1px solid rgba(123,92,255,0.3);
+  color: #A48EFF;
+  letter-spacing: 0.1em;
+}
+
+/* Suggested questions */
+.cb-suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 12px 16px;
+  background: rgba(0,0,0,0.2);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.cb-chip {
+  font-family: var(--mono);
+  font-size: 10px;
+  padding: 5px 11px;
+  border-radius: 100px;
+  border: 1px solid rgba(0,255,209,0.2);
+  color: var(--td);
+  background: rgba(0,255,209,0.04);
+  cursor: none;
+  transition: all 0.2s;
+  white-space: nowrap;
+  letter-spacing: 0.05em;
+}
+.cb-chip:hover {
+  border-color: var(--c);
+  color: var(--c);
+  background: rgba(0,255,209,0.08);
+}
+
+/* Messages area */
+#cb-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0,255,209,0.15) transparent;
+  min-height: 260px;
+  max-height: 360px;
+}
+#cb-messages::-webkit-scrollbar { width: 4px; }
+#cb-messages::-webkit-scrollbar-thumb { background: rgba(0,255,209,0.15); border-radius: 100px; }
+
+/* Message bubbles */
+.cb-msg {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  animation: msg-in 0.3s cubic-bezier(0.34,1.2,0.64,1);
+}
+@keyframes msg-in { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:none} }
+.cb-msg.user { flex-direction: row-reverse; }
+.cb-bubble {
+  max-width: 78%;
+  padding: 11px 15px;
+  border-radius: 16px;
+  font-size: 13px;
+  line-height: 1.75;
+  font-family: var(--body);
+  font-weight: 300;
+}
+.cb-msg.bot .cb-bubble {
+  background: rgba(123,92,255,0.12);
+  border: 1px solid rgba(123,92,255,0.2);
+  color: var(--t);
+  border-bottom-left-radius: 4px;
+}
+.cb-msg.user .cb-bubble {
+  background: linear-gradient(135deg, rgba(0,255,209,0.15), rgba(0,255,209,0.08));
+  border: 1px solid rgba(0,255,209,0.25);
+  color: #fff;
+  border-bottom-right-radius: 4px;
+}
+.cb-msg-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  flex-shrink: 0;
+  background: rgba(123,92,255,0.15);
+  border: 1px solid rgba(123,92,255,0.25);
+}
+.cb-msg.user .cb-msg-avatar {
+  background: rgba(0,255,209,0.1);
+  border-color: rgba(0,255,209,0.2);
+}
+
+/* Typing indicator */
+.cb-typing {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 12px 15px;
+  background: rgba(123,92,255,0.08);
+  border: 1px solid rgba(123,92,255,0.15);
+  border-radius: 16px;
+  border-bottom-left-radius: 4px;
+  width: fit-content;
+}
+.cb-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--c3);
+  opacity: 0.5;
+  animation: tdot 1.4s ease-in-out infinite;
+}
+.cb-dot:nth-child(2){animation-delay:0.2s}
+.cb-dot:nth-child(3){animation-delay:0.4s}
+@keyframes tdot {
+  0%,80%,100%{transform:translateY(0);opacity:0.4}
+  40%{transform:translateY(-6px);opacity:1}
+}
+
+/* Input area */
+.cb-footer {
+  padding: 14px 16px;
+  border-top: 1px solid var(--border);
+  background: rgba(0,0,0,0.3);
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+  flex-shrink: 0;
+}
+#cb-input {
+  flex: 1;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(0,255,209,0.15);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-family: var(--body);
+  font-size: 13px;
+  color: var(--t);
+  resize: none;
+  outline: none;
+  transition: border-color 0.2s;
+  max-height: 100px;
+  min-height: 42px;
+  line-height: 1.5;
+  cursor: none;
+}
+#cb-input::placeholder { color: var(--td); font-size: 12px; }
+#cb-input:focus { border-color: rgba(0,255,209,0.4); background: rgba(0,255,209,0.03); }
+#cb-send {
+  width: 42px; height: 42px;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(135deg, var(--c3), rgba(0,255,209,0.8));
+  color: #fff;
+  cursor: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s;
+}
+#cb-send:hover { transform: scale(1.05); box-shadow: 0 6px 20px rgba(123,92,255,0.5); }
+#cb-send:disabled { opacity: 0.4; cursor: not-allowed; }
+#cb-send svg { width: 18px; height: 18px; }
+.cb-powered {
+  text-align: center;
+  padding: 6px 0 2px;
+  font-family: var(--mono);
+  font-size: 8px;
+  color: var(--td);
+  letter-spacing: 0.12em;
+  flex-shrink: 0;
+  border-top: 1px solid var(--border);
+  padding-top: 8px;
+  margin: 0 16px 10px;
+}
+
+@media(max-width:480px){
+  #cb-window{width:calc(100vw - 32px);right:16px;bottom:130px}
+  #cb-trigger{right:16px}
+}
+
 /* ── AI MATRIX DECORATION ── */
 .matrix-bg{position:absolute;inset:0;overflow:hidden;opacity:0.04;pointer-events:none;font-family:var(--mono);font-size:11px;color:var(--c3);line-height:1.6}
 </style>
@@ -835,8 +1153,8 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--td);letter-spacing:0
         </div>
       </div>
       <div class="contact-links">
-        <a href="mailto:contact@vmsecops.com" class="clink">
-          <span class="clink-ic">✉</span>contact@vmsecops.com
+        <a href="/cdn-cgi/l/email-protection#43202c2d3722203703352e3026202c33306d202c2e" class="clink">
+          <span class="clink-ic">✉</span><span class="__cf_email__" data-cfemail="f2919d9c86939186b2849f8197919d8281dc919d9f">[email&#160;protected]</span>
         </a>
         <a href="https://wa.me/917386666420" class="clink" style="border-color:rgba(0,232,125,0.25);color:#00E87D">
           <span class="clink-ic">💬</span>WhatsApp: +91 73866 66420
@@ -865,7 +1183,7 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--td);letter-spacing:0
   </div>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ── CURSOR ──
 const cur = document.getElementById('cursor');
 const ring = document.getElementById('cursor-ring');
@@ -938,7 +1256,178 @@ document.addEventListener('mousemove', e => {
   document.querySelector('.o1').style.transform=`translate(${x*0.5}px,${y*0.5}px)`;
   document.querySelector('.o2').style.transform=`translate(${-x*0.3}px,${-y*0.3}px)`;
   document.querySelector('.o3').style.transform=`translate(${x*0.8}px,${y*0.8}px)`;
-});
+});</script>
+
+<!-- ══════════════════════════ CHATBOT ══════════════════════════ -->
+
+<!-- Floating trigger -->
+<button id="cb-trigger" aria-label="Open security assistant">
+  <span class="cb-notif" id="cb-notif">1</span>
+  <svg class="icon-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+    <circle cx="9" cy="10" r="1" fill="currentColor" stroke="none"/>
+    <circle cx="12" cy="10" r="1" fill="currentColor" stroke="none"/>
+    <circle cx="15" cy="10" r="1" fill="currentColor" stroke="none"/>
+  </svg>
+  <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+    <line x1="18" y1="6" x2="6" y2="18"/>
+    <line x1="6" y1="6" x2="18" y2="18"/>
+  </svg>
+</button>
+
+<!-- Chat window -->
+<div id="cb-window" role="dialog" aria-label="VM SecOps AI Assistant">
+  <div class="cb-header">
+    <div class="cb-avatar">&#x1F6E1;&#xFE0F;</div>
+    <div class="cb-header-info">
+      <div class="cb-name">VM SecOps AI</div>
+      <div class="cb-status">&#x25CF; Online — Security Advisor</div>
+    </div>
+    <span class="cb-header-badge">AI-Powered</span>
+  </div>
+  <div class="cb-suggestions" id="cb-chips">
+    <span class="cb-chip" data-q="What services does Vasu offer?">Services</span>
+    <span class="cb-chip" data-q="Tell me about AI/LLM security testing">AI Security</span>
+    <span class="cb-chip" data-q="What is Vasu's experience with PCI DSS?">PCI DSS</span>
+    <span class="cb-chip" data-q="How does mobile pentesting work?">Mobile Testing</span>
+    <span class="cb-chip" data-q="How can I hire Vasu for a pentest?">Hire Vasu</span>
+    <span class="cb-chip" data-q="What tools does Vasu use?">Tooling</span>
+  </div>
+  <div id="cb-messages">
+    <div class="cb-msg bot">
+      <div class="cb-msg-avatar">&#x1F6E1;&#xFE0F;</div>
+      <div class="cb-bubble">Hey! I'm Vasu's AI security assistant. Ask me anything about his <strong>pentesting services</strong>, <strong>AI/LLM security</strong> expertise, past engagements, or how to get in touch. &#x1F510;</div>
+    </div>
+  </div>
+  <div class="cb-footer">
+    <textarea id="cb-input" placeholder="Ask about services, AI security, pricing..." rows="1"></textarea>
+    <button id="cb-send" aria-label="Send">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="22" y1="2" x2="11" y2="13"/>
+        <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+      </svg>
+    </button>
+  </div>
+  <div class="cb-powered">Powered by Claude AI (Anthropic) &nbsp;·&nbsp; VM SecOps</div>
+</div>
+
+<script>
+(function(){
+  const SYSTEM = `You are the AI assistant for VM SecOps — the security portfolio of Vasu Melipaka, a Senior Security Analyst and Penetration Tester with 6+ years in cybersecurity and 11+ years total IT experience.
+
+Answer questions about Vasu's services, expertise, and how to engage him. Be professional, helpful, and concise. Use light markdown (bold, bullet lists).
+
+SERVICES: Web App Pentesting, Mobile (Android/iOS) Security, API Security, AI/LLM Security Testing, DevSecOps Advisory, Cloud Security (AWS/Azure).
+FRAMEWORKS: OWASP Web Top 10, OWASP API Top 10, OWASP MASVS, OWASP LLM Top 10, PCI DSS 4.0, MITRE ATLAS.
+TOOLS: Burp Suite, MobSF, Frida, Objection, Garak, Pyrit.
+AI SECURITY: Prompt injection, jailbreaking, RAG poisoning, LLM data exfiltration, agent hijacking, adversarial red teaming.
+STATS: 110+ engagements, 40+ web apps, 20+ mobile, 50+ APIs, ~92% retest closure rate.
+CONTACT: contact@vmsecops.com | WhatsApp: +91 73866 66420 | LinkedIn: linkedin.com/in/vaasumelipaka.
+DELIVERY: Evidence-backed PoCs, CVSS ratings, developer-ready fixes, executive summaries, retest validation.
+
+Keep replies under 120 words unless more detail is requested. For pricing, direct to contact — custom scoping quotes only. Never invent certifications or client names.`;
+
+  const trigger = document.getElementById('cb-trigger');
+  const win     = document.getElementById('cb-window');
+  const input   = document.getElementById('cb-input');
+  const sendBtn = document.getElementById('cb-send');
+  const msgs    = document.getElementById('cb-messages');
+  let history   = [];
+  let open      = false;
+  let busy      = false;
+
+  trigger.addEventListener('click', () => {
+    open = !open;
+    win.classList.toggle('open', open);
+    trigger.classList.toggle('open', open);
+    const n = document.getElementById('cb-notif');
+    if (n) n.remove();
+    if (open) setTimeout(() => input.focus(), 320);
+    scroll();
+  });
+
+  document.querySelectorAll('.cb-chip').forEach(c => {
+    c.addEventListener('click', () => { input.value = c.dataset.q; handleSend(); });
+  });
+
+  input.addEventListener('keydown', e => {
+    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleSend(); }
+  });
+  input.addEventListener('input', () => {
+    input.style.height = 'auto';
+    input.style.height = Math.min(input.scrollHeight, 100) + 'px';
+  });
+  sendBtn.addEventListener('click', handleSend);
+
+  function scroll() { setTimeout(() => msgs.scrollTo({ top: msgs.scrollHeight, behavior: 'smooth' }), 60); }
+
+  function addMsg(role, html) {
+    const d = document.createElement('div');
+    d.className = 'cb-msg ' + role;
+    const isBot = role === 'bot';
+    d.innerHTML = (isBot ? '<div class="cb-msg-avatar">&#x1F6E1;&#xFE0F;</div>' : '') +
+      '<div class="cb-bubble">' + html + '</div>' +
+      (!isBot ? '<div class="cb-msg-avatar" style="background:rgba(0,255,209,0.1);border-color:rgba(0,255,209,0.2)">&#x1F464;</div>' : '');
+    msgs.appendChild(d);
+    scroll();
+  }
+
+  function typing(show) {
+    const id = 'cbt';
+    if (!show) { const e = document.getElementById(id); if (e) e.remove(); return; }
+    const d = document.createElement('div');
+    d.id = id; d.className = 'cb-msg bot';
+    d.innerHTML = '<div class="cb-msg-avatar">&#x1F6E1;&#xFE0F;</div><div class="cb-typing"><div class="cb-dot"></div><div class="cb-dot"></div><div class="cb-dot"></div></div>';
+    msgs.appendChild(d); scroll();
+  }
+
+  function fmt(t) {
+    return t
+      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+      .replace(/`(.+?)`/g, '<code style="background:rgba(0,255,209,0.1);padding:1px 5px;border-radius:3px;font-family:var(--mono);font-size:11px">$1</code>')
+      .replace(/^[-•] (.+)/gm, '<li>$1</li>')
+      .replace(/(<li>.*<\/li>\n?)+/gs, m => '<ul style="list-style:none;margin:6px 0;display:flex;flex-direction:column;gap:4px;padding-left:8px">' + m + '</ul>')
+      .replace(/\n/g, '<br>');
+  }
+
+  async function handleSend() {
+    const text = input.value.trim();
+    if (!text || busy) return;
+    input.value = ''; input.style.height = 'auto';
+    busy = true; sendBtn.disabled = true;
+
+    addMsg('user', text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'));
+    history.push({ role: 'user', content: text });
+    typing(true);
+
+    try {
+      const res = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          model: 'claude-sonnet-4-20250514',
+          max_tokens: 1000,
+          system: SYSTEM,
+          messages: history
+        })
+      });
+      const data = await res.json();
+      typing(false);
+      if (data.content && data.content[0]) {
+        const reply = data.content[0].text;
+        history.push({ role: 'assistant', content: reply });
+        addMsg('bot', fmt(reply));
+      } else {
+        addMsg('bot', 'Something went wrong. Contact Vasu at <a href="mailto:contact@vmsecops.com" style="color:var(--c)">contact@vmsecops.com</a>');
+      }
+    } catch {
+      typing(false);
+      addMsg('bot', '&#x26A1; Connection issue. Reach Vasu at <a href="mailto:contact@vmsecops.com" style="color:var(--c)">contact@vmsecops.com</a> or <a href="https://wa.me/917386666420" style="color:#00E87D">WhatsApp</a>.');
+    } finally {
+      busy = false; sendBtn.disabled = false; input.focus();
+    }
+  }
+})();
 </script>
 </body>
 </html>
