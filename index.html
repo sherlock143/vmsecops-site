@@ -4,6 +4,29 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>VM SecOps — Vasu Melipaka | Senior Pentester & AI Security Researcher</title>
+
+<!-- ── SECURITY META TAGS ── -->
+<meta http-equiv="X-Content-Type-Options" content="nosniff"/>
+<meta http-equiv="X-Frame-Options" content="SAMEORIGIN"/>
+<meta name="referrer" content="strict-origin-when-cross-origin"/>
+<meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()"/>
+<meta http-equiv="Content-Security-Policy" content="
+  default-src 'self';
+  script-src 'self' 'unsafe-inline';
+  style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+  font-src https://fonts.gstatic.com;
+  img-src 'self' data: https:;
+  connect-src https://api.anthropic.com https://hn.algolia.com https://cve.circl.lu;
+  frame-ancestors 'none';
+"/>
+
+<!-- ── SEO ── -->
+<meta name="description" content="Vasu Melipaka — Senior Security Analyst specialising in Web, API, Mobile and AI/LLM penetration testing. OWASP, MASVS, PCI DSS 4.0 aligned."/>
+<meta name="robots" content="index, follow"/>
+<meta property="og:title" content="VM SecOps — Vasu Melipaka | Senior Pentester"/>
+<meta property="og:description" content="Web, API, Mobile & AI/LLM Security Testing. 110+ engagements. OWASP · MASVS · PCI DSS 4.0."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://vmsecops.com"/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
@@ -1074,7 +1097,7 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--td);letter-spacing:0
     <div class="hero-cta">
       <a href="#services" class="btn-p">Security Services</a>
       <a href="#contact" class="btn-g">Let's Talk →</a>
-      <a href="https://www.linkedin.com/in/vaasumelipaka" class="btn-g">LinkedIn ↗</a>
+      <a href="https://www.linkedin.com/in/vaasumelipaka" class="btn-g" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
     </div>
     <div class="hero-tags">
       <span class="tag">Web & API Pentesting</span>
@@ -1122,7 +1145,7 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--td);letter-spacing:0
         <div class="hic-photo-frame">
           <img
             id="hic-photo"
-            src="https://media.licdn.com/dms/image/v2/D5603AQHQlLt5OsbXGw/profile-displayphoto-scale_200_200/B56Zsq17FcIYAg-/0/1765950346986?e=1773878400&v=beta&t=1XAmIg2TiKh9OdPfL1nCoKSr1jx9qsBE7A7ME6Oyz0I"
+            src="./vasu.jpg"
             alt="Vasu Melipaka"
             class="hic-photo-img"
             onerror="this.style.display='none';document.getElementById('hic-initials').style.display='flex';"
@@ -1154,7 +1177,7 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--td);letter-spacing:0
       <!-- stat row -->
       <div class="hic-stats">
         <div class="hic-stat">
-          <div class="hic-stat-n" style="color:var(--c)">7+</div>
+          <div class="hic-stat-n" style="color:var(--c)">6+</div>
           <div class="hic-stat-l">YRS CYBER</div>
         </div>
         <div class="hic-stat-div"></div>
@@ -1661,13 +1684,13 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--td);letter-spacing:0
         </div>
       </div>
       <div class="contact-links">
-        <a href="mailto:contact@vmsecops.com" class="clink">
-          <span class="clink-ic">✉</span>contact@vmsecops.com
+        <a href="/cdn-cgi/l/email-protection#c4a7abaab0a5a7b084b2a9b7a1a7abb4b7eaa7aba9" class="clink">
+          <span class="clink-ic">✉</span><span class="__cf_email__" data-cfemail="a6c5c9c8d2c7c5d2e6d0cbd5c3c5c9d6d588c5c9cb">[email&#160;protected]</span>
         </a>
-        <a href="https://wa.me/917386666420" class="clink" style="border-color:rgba(0,232,125,0.25);color:#00E87D">
+        <a href="https://wa.me/917386666420" class="clink" target="_blank" rel="noopener noreferrer" style="border-color:rgba(0,232,125,0.25);color:#00E87D">
           <span class="clink-ic">💬</span>WhatsApp: +91 73866 66420
         </a>
-        <a href="https://www.linkedin.com/in/vaasumelipaka" class="clink">
+        <a href="https://www.linkedin.com/in/vaasumelipaka" class="clink" target="_blank" rel="noopener noreferrer">
           <span class="clink-ic">in</span>linkedin.com/in/vaasumelipaka
         </a>
       </div>
@@ -1691,7 +1714,7 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--td);letter-spacing:0
   </div>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ── CURSOR ──
 const cur = document.getElementById('cursor');
 const ring = document.getElementById('cursor-ring');
@@ -1753,18 +1776,19 @@ document.querySelectorAll('.rev').forEach(el=>obs.observe(el));
 
 // ── TICKER ──
 async function loadTicker(){
+  // Safe HTML escape helper
+  function esc(s){ const d=document.createElement('div'); d.textContent=s; return d.innerHTML; }
   let items=[];
   try{
     const r=await fetch('https://hn.algolia.com/api/v1/search?query=cybersecurity+AI+LLM+vulnerability&tags=story&hitsPerPage=8');
     const d=await r.json();
-    items=d.hits.map(h=>`<span class="tick-news">📰 ${h.title}</span>`);
+    items=d.hits.map(h=>`<span class="tick-news">📰 ${esc(h.title)}</span>`);
   }catch(e){}
   try{
     const r=await fetch('https://cve.circl.lu/api/last');
     const d=await r.json();
-    d.slice(0,4).forEach(c=>items.push(`<span class="tick-cve">⚠ ${c.id}</span>`));
+    d.slice(0,4).forEach(c=>items.push(`<span class="tick-cve">⚠ ${esc(c.id)}</span>`));
   }catch(e){}
-  // Static AI security items
   const aiItems=[
     '<span class="tick-ai">🤖 OWASP LLM01: Prompt Injection — Top AI Threat Vector 2024</span>',
     '<span class="tick-ai">🤖 RAG Pipeline Poisoning gaining traction in enterprise AI attacks</span>',
@@ -1862,6 +1886,8 @@ Keep replies under 120 words unless more detail is requested. For pricing, direc
   let history   = [];
   let open      = false;
   let busy      = false;
+  let msgCount  = 0;
+  const MSG_LIMIT = 20;
 
   trigger.addEventListener('click', () => {
     open = !open;
@@ -1909,7 +1935,10 @@ Keep replies under 120 words unless more detail is requested. For pricing, direc
   }
 
   function fmt(t) {
-    return t
+    // Step 1: escape raw HTML first to prevent XSS
+    const esc = t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    // Step 2: then apply safe markdown transforms on escaped string
+    return esc
       .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
       .replace(/`(.+?)`/g, '<code style="background:rgba(0,255,209,0.1);padding:1px 5px;border-radius:3px;font-family:var(--mono);font-size:11px">$1</code>')
       .replace(/^[-•] (.+)/gm, '<li>$1</li>')
@@ -1918,13 +1947,24 @@ Keep replies under 120 words unless more detail is requested. For pricing, direc
   }
 
   async function handleSend() {
-    const text = input.value.trim();
+    let text = input.value.trim();
     if (!text || busy) return;
+    // Input length cap — prevents prompt injection via oversized payloads
+    if (text.length > 500) {
+      text = text.substring(0, 500);
+    }
+    if (msgCount >= MSG_LIMIT) {
+      addMsg('bot', '⚠ Session limit reached. Please contact Vasu directly at <a href="mailto:contact@vmsecops.com" style="color:var(--c)">contact@vmsecops.com</a>');
+      return;
+    }
+    msgCount++;
     input.value = ''; input.style.height = 'auto';
     busy = true; sendBtn.disabled = true;
 
     addMsg('user', text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'));
     history.push({ role: 'user', content: text });
+    // Cap history to last 10 exchanges to prevent context stuffing
+    if (history.length > 20) history = history.slice(-20);
     typing(true);
 
     try {
@@ -1949,12 +1989,4 @@ Keep replies under 120 words unless more detail is requested. For pricing, direc
       }
     } catch {
       typing(false);
-      addMsg('bot', '&#x26A1; Connection issue. Reach Vasu at <a href="mailto:contact@vmsecops.com" style="color:var(--c)">contact@vmsecops.com</a> or <a href="https://wa.me/917386666420" style="color:#00E87D">WhatsApp</a>.');
-    } finally {
-      busy = false; sendBtn.disabled = false; input.focus();
-    }
-  }
-})();
-</script>
-</body>
-</html>
+      addMsg('bot', '&#x26A1; Connection issue. Reach Vasu at <a href="mailto:contact@vmsecops.com" s
